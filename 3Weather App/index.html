@@ -16,21 +16,21 @@
 
         <div class="weather">
             <img src="./Images/drizzle.png" class="weather-icon">
-            <h1 class="temp">0°c</h1>
-            <h2 class="city">📍Location</h2>
+            <h1 class="temp">--°c</h1>
+            <h2 class="city">🗺 Location</h2>
 
             <div class="details">
                 <div class="col">
                     <img src="./Images/humidity.png">
                     <div>
-                        <p class="humidity">0%</p>
+                        <p class="humidity">--%</p>
                         <p>Humadity</p>
                     </div>
                 </div>
                 <div class="col">
                     <img src="./Images/wind.png">
                     <div>
-                        <p class="wind">0 km/h</p>
+                        <p class="wind">-- km/h</p>
                         <p>Wind Speed</p>
                     </div>
                 </div>
@@ -64,7 +64,9 @@ async function checkWeather(city) {
 
     var data = await response.json();
 
-    document.querySelector(".city").innerHTML = "📍 " + data.name;
+    console.log(data);
+
+    document.querySelector(".city").innerHTML = "🗺 " + data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
@@ -76,6 +78,8 @@ async function checkWeather(city) {
         Drizzle: "./Images/drizzle.png",
         Mist: "./Images/mist.png",
         Snow: "./Images/snow.png",
+        Haze: "./Images/haze.png",
+        Smoke: "./Images/smoke.png",
     };
 
     // Smooth Icon Transition
