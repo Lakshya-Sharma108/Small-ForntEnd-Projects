@@ -8,7 +8,7 @@
 .container{
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg,#153677, #4e085f );
+    background: darkslategray;
     padding: 10px;
 }
 
@@ -91,4 +91,21 @@ ul li.checked{
 
 ul li.checked::before{
     background-image: url(./Images/check.png);
+}
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+ul li span:hover{
+    background: #edeef0;
 }
