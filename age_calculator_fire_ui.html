@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Age Calculator — Fire UI</title>
+  <style>
+    :root{
+      --bg1:#0f0122; /* deep */
+      --bg2:#2b0b49; /* purple */
+      --accent:#ffd84d; /* yellow */
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.08);
+      --muted: rgba(255,255,255,0.7);
+      --card-w: 520px;
+      --radius:18px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,120,120,0.06), transparent 10%),
+                  linear-gradient(135deg,var(--bg1), var(--bg2));
+      color:#fff;display:flex;align-items:center;justify-content:center;padding:28px;
+    }
+
+    .card{
+      width:100%;max-width:var(--card-w);border-radius:var(--radius);padding:28px;background:linear-gradient(180deg,var(--glass), var(--glass-2));backdrop-filter: blur(10px) saturate(120%);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.06)
+    }
+
+    /* decorative flame-ish glow */
+    .card::before{
+      content:'';position:absolute;right:-120px;top:-80px;width:360px;height:360px;border-radius:50%;filter:blur(60px);
+      background:linear-gradient(45deg, rgba(255,120,80,0.12), rgba(255,200,80,0.06));transform:rotate(20deg);z-index:0;
+    }
+
+    header{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#2b0b49,#4b0b73);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:var(--accent);box-shadow:0 6px 18px rgba(43,11,73,0.35)
+    }
+    h1{font-size:20px;letter-spacing:-0.2px}
+    h1 small{display:block;font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
+
+    .form{
+      margin-top:22px;display:flex;gap:12px;align-items:center;position:relative;z-index:1
+    }
+
+    input[type=date]{
+      -webkit-appearance:none;appearance:none;padding:14px 16px;border-radius:12px;border:0;background:rgba(255,255,255,0.02);color:inherit;font-size:15px;flex:1;outline:2px solid transparent;transition:outline .18s ease,transform .12s ease;cursor:pointer
+    }
+
+    input[type=date]:focus{outline:2px solid rgba(255,216,77,0.14);transform:translateY(-2px)}
+
+    button.calc{
+      padding:12px 18px;border-radius:12px;border:0;background:linear-gradient(180deg,var(--accent),#ffb84d);color:#111;font-weight:700;cursor:pointer;font-size:15px;box-shadow:0 10px 20px rgba(255,184,77,0.12);transition:transform .12s ease;white-space:nowrap
+    }
+    button.calc:active{transform:translateY(1px)}
+
+    .result{
+      margin-top:22px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:14px;z-index:1
+    }
+
+    .age-card{display:flex;gap:14px;align-items:center}
+    .age-pill{min-width:84px;padding:12px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));text-align:center}
+    .age-pill strong{display:block;font-size:18px;color:var(--accent)}
+    .age-pill span{display:block;font-size:12px;color:var(--muted)}
+
+    p.note{color:var(--muted);font-size:13px;margin-left:auto}
+
+    .small{font-size:13px;color:var(--muted);margin-top:12px}
+
+    /* responsive */
+    @media (max-width:540px){.card{padding:18px} .logo{width:52px;height:52px} .age-pill{min-width:64px} h1{font-size:18px}}
+
+    /* tiny enter animation */
+    .card{transform:translateY(10px);opacity:0;animation:lift .45s ease forwards}
+    @keyframes lift{to{transform:none;opacity:1}}
+
+    /* error styles */
+    .error{border:1px solid rgba(255,100,100,0.2);box-shadow:0 8px 18px rgba(255,50,50,0.06)}
+
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <header>
+      <div class="logo">AC</div>
+      <div>
+        <h1>Age Calculator <small>Clean, modern UI — enter your birth date</small></h1>
+      </div>
+    </header>
+
+    <section class="form" aria-label="age-input">
+      <input id="date" type="date" aria-label="Choose your birth date">
+      <button id="calcBtn" class="calc">Calculate</button>
+    </section>
+
+    <section id="result" class="result" aria-live="polite">
+      <div class="age-card">
+        <div class="age-pill"><strong id="years">--</strong><span>Years</span></div>
+        <div class="age-pill"><strong id="months">--</strong><span>Months</span></div>
+        <div class="age-pill"><strong id="days">--</strong><span>Days</span></div>
+      </div>
+      <p class="note" id="note">Pick a date and hit calculate.</p>
+    </section>
+
+    <p class="small">Tip: You can paste a date (YYYY-MM-DD) into the field. The picker won't allow a future date.</p>
+  </main>
+
+  <script>
+    // set max to today
+    const userInput = document.getElementById('date');
+    userInput.max = new Date().toISOString().split('T')[0];
+
+    const yearsEl = document.getElementById('years');
+    const monthsEl = document.getElementById('months');
+    const daysEl = document.getElementById('days');
+    const note = document.getElementById('note');
+    const calcBtn = document.getElementById('calcBtn');
+    const resultCard = document.getElementById('result');
+
+    function getDaysInMonth(year, month){
+      // month is 1-12
+      return new Date(year, month, 0).getDate();
+    }
+
+    function calculateAge(){
+      const val = userInput.value;
+      if(!val){
+        note.textContent = 'Please choose your birth date first.';
+        resultCard.classList.add('error');
+        return;
+      }
+      resultCard.classList.remove('error');
+
+      const birth = new Date(val + 'T00:00:00'); // normalize
+      const today = new Date();
+
+      if(birth > today){
+        note.textContent = 'Birth date cannot be in the future.';
+        resultCard.classList.add('error');
+        yearsEl.textContent = monthsEl.textContent = daysEl.textContent = '--';
+        return;
+      }
+
+      let y1 = birth.getFullYear(), m1 = birth.getMonth()+1, d1 = birth.getDate();
+      let y2 = today.getFullYear(), m2 = today.getMonth()+1, d2 = today.getDate();
+
+      let years = y2 - y1;
+      let months = m2 - m1;
+      let days = d2 - d1;
+
+      if(days < 0){
+        // borrow days from previous month of current date
+        const prevMonth = m2 - 1 === 0 ? 12 : m2 - 1;
+        const prevYear = m2 - 1 === 0 ? y2 - 1 : y2;
+        days += getDaysInMonth(prevYear, prevMonth);
+        months -= 1;
+      }
+
+      if(months < 0){
+        months += 12;
+        years -= 1;
+      }
+
+      // safety clamp
+      years = Math.max(0, years);
+      months = Math.max(0, months);
+      days = Math.max(0, days);
+
+      yearsEl.textContent = years;
+      monthsEl.textContent = months;
+      daysEl.textContent = days;
+
+      // special messages
+      if(d2 === d1 && m2 === m1){
+        note.textContent = `Happy Birthday! You're ${years} years old today 🎉`;
+      } else {
+        note.textContent = `As of ${today.toLocaleDateString()}, you are ${years}y ${months}m ${days}d old.`;
+      }
+    }
+
+    // wire events
+    calcBtn.addEventListener('click', calculateAge);
+
+    // support Enter key on date input
+    userInput.addEventListener('keydown', e => { if(e.key === 'Enter') calculateAge(); });
+
+    // small auto-calc if user selects date with picker
+    userInput.addEventListener('change', () => { if(userInput.value) calculateAge(); });
+
+  </script>
+</body>
+</html>

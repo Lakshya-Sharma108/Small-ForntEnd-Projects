@@ -2,80 +2,154 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
+/* Background */
 .container{
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #4203a9, #90bafc);
+    padding: 20px;
+    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 40%),
+                linear-gradient(135deg, #0f0122, #2b0b49);
     color: #fff;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
+/* Glass Card */
 .calculater{
     width: 100%;
     max-width: 600px;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 10%;
+    padding: 35px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow decoration */
+.calculater::before{
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -120px;
+    right: -150px;
+    background: linear-gradient(45deg, rgba(255,200,80,0.18), rgba(255,120,80,0.08));
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
 }
 
 .calculater h1{
-    font-size: 60px;
+    position: relative;
+    z-index: 2;
+    font-size: 55px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    font-weight: 700;
 }
 
 .calculater h1 span{
-    color: #ffff76;
+    color: #ffd84d;
 }
 
+/* Input Section */
 .input-box{
     margin: 40px 0;
-    padding: 35px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
     display: flex;
     align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
 }
 
+/* Date Input */
 .input-box input{
     flex: 1;
-    margin-right: 20px;
-    padding: 14px 20px;
-    border: 0;
-    outline: 0;
+    padding: 14px 18px;
     font-size: 18px;
-    border-radius: 5px;
-    position: relative;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    outline: none;
+    transition: 0.2s ease;
 }
 
-.input-box button{
-    background: #ffff76;
-    border: 0;
-    outline: 0;
-    padding: 15px 30px;
-    border-radius: 5px;
-    font-weight: 500;
-    color: #333;
-    cursor:pointer;
+.input-box input:focus{
+    border-color: #ffd84d;
+    box-shadow: 0 0 12px rgba(255,216,77,0.4);
+    transform: translateY(-2px);
 }
 
+/* Calendar icon fix */
 .input-box input::-webkit-calendar-picker-indicator{
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: auto;
-    height: auto;
-    position: absolute;
-    background-position: calc(100% - 10px);
-    background-size: 30px;
+    filter: invert(1);
     cursor: pointer;
 }
 
+/* Button */
+.input-box button{
+    padding: 14px 28px;
+    background: linear-gradient(180deg, #ffd84d, #ffb84d);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #222;
+    transition: 0.15s ease;
+    box-shadow: 0 10px 20px rgba(255,184,77,0.25);
+}
+
+.input-box button:hover{
+    transform: translateY(-2px);
+}
+
+.input-box button:active{
+    transform: translateY(1px);
+}
+
+
+
+/* Result Text */
 #result{
-    font-size: 20px;
+    font-size: 22px;
+    margin-top: 10px;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
 }
 
 #result span{
-    color: #ffff76;
+    color: #ffd84d;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 600px){
+    .calculater{
+        padding: 25px;
+        margin-top: 20%;
+    }
+    .calculater h1{
+        font-size: 40px;
+    }
+    .input-box{
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .input-box button{
+        width: 100%;
+    }
 }
