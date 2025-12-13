@@ -1,0 +1,74 @@
+/* ---------- COLOR PALETTES ---------- */
+:root {
+  --radius: 12px;
+  --glass-border-alpha: 0.06;
+  --trans-300: 300ms ease;
+}
+
+/* Palette 1 - Default */
+[data-palette='1'] {
+  --pal-1: #778873;
+  --pal-2: #A1BC98;
+  --pal-3: #D2DCB6;
+  --pal-4: #F1F3E0;
+}
+
+/* Palette 2 */
+[data-palette='2'] {
+  --pal-1: #452829;
+  --pal-2: #57595B;
+  --pal-3: #E8D1C5;
+  --pal-4: #F3E8DF;
+}
+
+/* Palette 3 */
+[data-palette='3'] {
+  --pal-1: #1B3C53;
+  --pal-2: #234C6A;
+  --pal-3: #456882;
+  --pal-4: #E3E3E3;
+}
+
+/* Theme-aware variables */
+:root {
+  color-scheme: light dark;
+  --bg: #eaf2ff;
+  --bg-2: #fff;
+  --text: #0b0b09;
+  --muted: rgba(11, 11, 9, 0.6);
+  --card: rgba(11, 11, 9, 0.03);
+  --glass-border: rgba(11, 11, 9, var(--glass-border-alpha));
+  --accent: var(--pal-1);
+  --accent-2: var(--pal-2);
+}
+
+html[data-theme='dark'] {
+  --bg: #0a0a0f;
+  --bg-2: #12121a;
+  --text: #f0f0f5;
+  --muted: rgba(240, 240, 245, 0.7);
+  --card: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--trans-300), color var(--trans-300);
+  min-height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
