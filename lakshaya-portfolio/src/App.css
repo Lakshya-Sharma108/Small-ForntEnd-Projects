@@ -301,7 +301,7 @@ form textarea {
   border: 1px solid var(--glass-border);
   background: transparent;
   color: var(--text);
-  margin-top: 8px;
+  margin-bottom: 10px;
 }
 
 .resume-box {
