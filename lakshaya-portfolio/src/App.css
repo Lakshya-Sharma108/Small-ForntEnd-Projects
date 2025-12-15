@@ -290,7 +290,7 @@ section {
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 20px;
 }
 
 form input,
@@ -329,6 +329,8 @@ form textarea {
   background: var(--pal-1);
   color: var(--bg-2);
   border: none;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .btn.primary:hover {
