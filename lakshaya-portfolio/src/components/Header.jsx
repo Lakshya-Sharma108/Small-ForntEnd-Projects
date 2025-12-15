@@ -11,7 +11,7 @@ export default function Header({ theme, toggleTheme, palette, cyclePalette, mobi
         <div className="brand">
           <div className="logo">LA</div>
           <div>
-            <div style={{ fontSize: '12px', color: 'var(--muted)' }}>Lakshaya Awasthi</div>
+            <div style={{ fontSize: '12px', fontWeight: '600', color: 'var(--muted)' }}>Lakshaya Awasthi</div>
             <div style={{ fontSize: '11px', color: 'var(--muted)' }}>Java • Full-Stack Developer</div>
           </div>
         </div>

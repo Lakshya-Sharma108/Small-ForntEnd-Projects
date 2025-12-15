@@ -1,3 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,400;0,600;0,700;1,500&display=swap');
+
 *{
-    
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* light theme colors: */
+:root{
+    --color-text-primary: #1F2936;
+    --color-text-placeholder: #798EAE;
+    --color-bg-primary: #f9fafb;
+    --color-bg-secondary: #ECECFD;
+    --color-bg-sidebar: #FFFFFF;
+    --color-border-hr: #E2E8F0;
+    --color-hover-primary: #695CFE;
+    --color-hover-secondary: #e2e2fb;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+}
+
+body{
+    background: var(--color-bg-primary);
+}
+
+.sidebar{
+    position:sticky;
+    top: 0;
+    height: 100vh;
+    width: 270px;
+    background: var(--color-bg-sidebar);
+    border-right: 1px solid var(--color-border-hr);
+    box-shadow: 0 3px 9px var(--color-shadow);
+}
+
+.sidebar .sidebar-header{
+    display: flex;
+    padding: 20px 18px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border-hr);
+}
+
+.sidebar-header .header-logo{
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.sidebar-header .sidebar-toggle{
+    height: 40px;
+    width: 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    transition: 0.4s ease;
+}
+
+.sidebar-header .sidebar-toggle:hover{
+    background: var(--color-hover-secondary);
+}
+
+.sidebar-header .sidebar-toggle:hover span{
+    font-size: 1.75rem;
+}
+
+.sidebar .sidebar-content{
+    padding: 20px 18px;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-text-placeholder);
+}
+
+.sidebar-content .search-form{
+    min-height: 48px;
+    border-radius: 8px;
+    display: flex;
+    padding: 0 15px;
+    margin: 5px 0 20px;
+    align-items: center;
+    white-space: nowrap;
+    background: var(--color-bg-secondary);
+    transition: 0.4s ease;
+}
+
+.sidebar-content .search-form:focus-within{
+    background: var(--color-hover-secondary);
+}
+
+.search-form input{
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+    width: 100%;
+    margin-left: 15px;
+    color: var(--color-text-primary);
+}
+
+.search-form input{
+    color: var(--color-text-placeholder);
+}
+
+.search-form input::placeholder{
+    color: var(--color-text-placeholder);
+}
+
+/* continue from 11:54 */
