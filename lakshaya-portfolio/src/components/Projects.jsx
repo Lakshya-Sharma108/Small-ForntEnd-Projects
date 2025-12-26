@@ -6,17 +6,17 @@ export default function Projects() {
   const projects = [
     {
       image: '/Images/hospital.jpg',
-      title: 'Hospital Management System',
+      title: <a className="project-links" target="_blank" href="#">Hospital Management System</a>,
       desc: 'OOP-based Java system to manage patients, staff, billing & records. Emphasis on clean architecture.'
     },
     {
       image: '/Images/weather.jpg',
-      title: 'Weather App',
-      desc: 'Modern JS app with live API integration and responsive UI.'
+      title: <a className="project-links" target="_blank" href="https://weather-by-lakshaya.netlify.app">Weather App</a>,
+      desc: 'Real-time weather app built with HTML, CSS, and JavaScript using a public weather API.'
     },
     {
       image: '/Images/student.jpg',
-      title: 'Student Portal',
+      title: <a className="project-links" target="_blank" href="#">Student Portal</a>,
       desc: 'Complete student portal with authentication, profiles & dashboards.'
     }
   ]

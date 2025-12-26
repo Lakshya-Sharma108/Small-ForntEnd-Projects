@@ -276,6 +276,10 @@ section {
   margin-bottom: 6px;
 }
 
+.project-title .project-links {
+  text-decoration: none;
+}
+
 .project-desc {
   color: var(--muted);
   font-size: 14px;

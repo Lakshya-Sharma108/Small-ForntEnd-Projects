@@ -53,7 +53,7 @@ export default function Hero() {
           <h1>Hello, I am</h1>
           <div className="intro-title">Lakshaya Awasthi</div>
           <div className="intro-sub">
-            Java full-stack developer — I build clean, modern, and maintainable software.
+            A man with hopes and dreams, a believer in the magic of the universe
           </div>
 
           <div className="typing-line">
