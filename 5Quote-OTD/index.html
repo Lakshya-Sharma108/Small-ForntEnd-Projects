@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote of the Day</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <div class="background-gradient"></div>
     <div class="floating-shapes">
@@ -13,17 +15,21 @@
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
     </div>
-    
+
     <div class="quote-container">
         <div class="quote-box">
             <div class="quote-header">
                 <svg class="quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
-                    <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                    <path
+                        d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z">
+                    </path>
+                    <path
+                        d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z">
+                    </path>
                 </svg>
                 <h1>Quote of the Day</h1>
             </div>
-            
+
             <div class="quote-content">
                 <blockquote id="quote" class="loading">
                     <span class="loading-text">Loading inspiring quote...</span>
@@ -37,13 +43,14 @@
             <div class="button-group">
                 <button class="btn btn-primary" onclick="getQuote()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
                     </svg>
                     New Quote
                 </button>
                 <button class="btn btn-secondary" onclick="tweet()">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                     Share
                 </button>
@@ -55,7 +62,7 @@
                 </button>
             </div>
         </div>
-        
+
         <div class="footer">
             <p>Powered by Quotable API</p>
         </div>
@@ -67,4 +74,5 @@
 
     <script src="./script.js"></script>
 </body>
+
 </html>

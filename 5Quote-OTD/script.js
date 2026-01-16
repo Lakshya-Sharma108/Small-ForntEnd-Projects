@@ -33,14 +33,14 @@ async function getQuote() {
         author.classList.add('loading');
         quote.innerHTML = '<span class="loading-text">Loading inspiring quote...</span>';
         author.innerHTML = '...';
-        
+
         try {
             // Try the API first
             const response = await fetch(API_URL);
-            
+
             if (response.ok) {
                 const data = await response.json();
-                
+
                 // Display quote with animation
                 setTimeout(() => {
                     quote.classList.remove('loading');
@@ -53,28 +53,28 @@ async function getQuote() {
         } catch (apiError) {
             console.log('API failed, using fallback quotes');
         }
-        
+
         // If API fails, use fallback quotes
         if (usedFallbackIndices.length >= fallbackQuotes.length) {
             usedFallbackIndices = []; // Reset if all quotes used
         }
-        
+
         let randomIndex;
         do {
             randomIndex = Math.floor(Math.random() * fallbackQuotes.length);
         } while (usedFallbackIndices.includes(randomIndex));
-        
+
         usedFallbackIndices.push(randomIndex);
-        
+
         const selectedQuote = fallbackQuotes[randomIndex];
-        
+
         setTimeout(() => {
             quote.classList.remove('loading');
             author.classList.remove('loading');
             quote.innerHTML = selectedQuote.quote;
             author.innerHTML = `— ${selectedQuote.author}`;
         }, 300);
-        
+
     } catch (error) {
         console.error('Error:', error);
         quote.classList.remove('loading');
@@ -89,9 +89,9 @@ async function getQuote() {
 function tweet() {
     const quoteText = quote.innerText;
     const authorText = author.innerText;
-    
-    if (quoteText && 
-        quoteText !== 'Loading inspiring quote...' && 
+
+    if (quoteText &&
+        quoteText !== 'Loading inspiring quote...' &&
         quoteText !== 'Unable to load quote. Please try again.') {
         const tweetText = `"${quoteText}" ${authorText}`;
         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
@@ -105,12 +105,12 @@ function tweet() {
 async function copyQuote() {
     const quoteText = quote.innerText;
     const authorText = author.innerText;
-    
-    if (quoteText && 
-        quoteText !== 'Loading inspiring quote...' && 
+
+    if (quoteText &&
+        quoteText !== 'Loading inspiring quote...' &&
         quoteText !== 'Unable to load quote. Please try again.') {
         const textToCopy = `"${quoteText}" ${authorText}`;
-        
+
         try {
             await navigator.clipboard.writeText(textToCopy);
             showNotification('Quote copied to clipboard! ✓');
@@ -122,14 +122,14 @@ async function copyQuote() {
             textArea.style.left = '-999999px';
             document.body.appendChild(textArea);
             textArea.select();
-            
+
             try {
                 document.execCommand('copy');
                 showNotification('Quote copied to clipboard! ✓');
             } catch (err) {
                 showNotification('Failed to copy quote');
             }
-            
+
             document.body.removeChild(textArea);
         }
     } else {
@@ -141,10 +141,10 @@ async function copyQuote() {
 function showNotification(message) {
     const notification = document.getElementById('notification');
     const notificationText = document.getElementById('notification-text');
-    
+
     notificationText.textContent = message;
     notification.classList.add('show');
-    
+
     setTimeout(() => {
         notification.classList.remove('show');
     }, 3000);
