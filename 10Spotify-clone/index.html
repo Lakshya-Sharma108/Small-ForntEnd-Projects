@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify</title>
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="icon" type="image/png" href="./tab-logo.png">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./utility.css">
 </head>
@@ -99,8 +100,8 @@
                 </div>
 
                 <div class="buttons">
-                    <button>Signup</button>
-                    <button>Login</button>
+                    <button class="signupbtn">Sign up</button>
+                    <button class="loginbtn">Log in</button>
                 </div>
             </div>
 
@@ -108,6 +109,7 @@
             <div class="spotifyPlaylists">
                 <h1>Spotify Playlists</h1>
                 <div class="cardContainer">
+                    <!-- First Card -->
                     <div class="card">
                         <div class="play">
                             <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
@@ -123,15 +125,32 @@
                         <h2>Ghar Kab Aaoge!</h2>
                         <p>Lorem ipsum dolor amet consectetur adipisicing elit. </p>
                     </div>
+
+                    <!-- Second Card -->
                     <div class="card">
+                        <div class="play">
+                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true">
+                                <!-- Green circle -->
+                                <circle cx="32" cy="32" r="26" fill="#1DB954" />
+
+                                <!-- Play icon -->
+                                <polygon points="26,20 26,44 46,32" fill="#000000" />
+                            </svg>
+                        </div>
                         <img src="https://i.scdn.co/image/ab67616d00001e025be30e0d058181d80d470511" alt="">
                         <h2>Ghar Kab Aaoge!</h2>
                         <p>Lorem ipsum dolor amet consectetur adipisicing elit. </p>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
