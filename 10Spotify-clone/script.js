@@ -1,5 +1,7 @@
 // Let's write some js:
 
+let currentSong = new Audio();
+
 async function getSongs() {
     let a = await fetch("http://127.0.0.1:5500/10Spotify-clone/songs/");
     let response = await a.text();
@@ -26,8 +28,12 @@ async function getSongs() {
 
 
 const playMusic = (track) => {
-    let audio = new Audio("/songs/" + track);
-    audio.play();
+    console.log("Attempting to play:", track);
+    // Use the full path including 10Spotify-clone
+    // let audio = new Audio("/10Spotify-clone/songs/" + track);
+
+    currentSong.src = "/10Spotify-clone/songs/" + track;
+    currentSong.play()
 }
 
 
@@ -53,10 +59,10 @@ async function main() {
 
 
     // Attach an event listner to each song
-    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
-        e.addEventListener("click", element => {
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e=>{
+        e.addEventListener("click", element=> {
             console.log(e.querySelector(".info").firstElementChild.innerHTML);
-            playMusic(decodeURIComponent(e.querySelector(".info").firstElementChild.innerHTML.trim()))
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
     })
 }
