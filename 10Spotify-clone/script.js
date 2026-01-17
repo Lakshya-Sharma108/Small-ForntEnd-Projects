@@ -3,7 +3,7 @@
 async function getSongs() {
     let a = await fetch("http://127.0.0.1:5500/10Spotify-clone/songs/");
     let response = await a.text();
-    console.log(response);
+    // console.log(response);
 
 
     let div = document.createElement("div");
@@ -22,6 +22,12 @@ async function getSongs() {
     }
     // console.log(songs);
     return songs;
+}
+
+
+const playMusic = (track) => {
+    let audio = new Audio("/songs/" + track);
+    audio.play();
 }
 
 
@@ -45,12 +51,16 @@ async function main() {
                                 </div></li>`;
     }
 
-    // playing songs
-    var audio = new Audio(songs[0]);
-    // audio.play(); 
 
-
-
+    // Attach an event listner to each song
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+            console.log(e.querySelector(".info").firstElementChild.innerHTML);
+            playMusic(decodeURIComponent(e.querySelector(".info").firstElementChild.innerHTML.trim()))
+        })
+    })
 }
 
 main();
+
+
