@@ -234,7 +234,7 @@ button>* {
     padding: 12px;
 }
 
-.seekbar{
+.seekbar {
     height: 2px;
     width: 97%;
     border: 2px solid black;
@@ -245,7 +245,7 @@ button>* {
     margin: 8px;
 }
 
-.circle{
+.circle {
     width: 13px;
     height: 13px;
     border-radius: 13px;
