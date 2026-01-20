@@ -70,3 +70,9 @@ async function main() {
 main();
 
 
+
+// what we did till now:
+// 1. Fetch the list of songs from the server
+// 2. Parse the response to get the song names
+// 3. Display the song names in the UI
+// 4. Attach event listeners to each song item to play the song when clicked
