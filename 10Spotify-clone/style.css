@@ -258,4 +258,6 @@ button>* {
     transition: left 0.5s;
 }
 
-/* video timeline 2:29:43 */
+.songbuttons img {
+    cursor: pointer;
+}

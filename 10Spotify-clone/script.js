@@ -34,6 +34,7 @@ const playMusic = (track) => {
 
     currentSong.src = "/10Spotify-clone/songs/" + track;
     currentSong.play()
+    play.src = "./pausesong.svg"
 }
 
 
@@ -59,11 +60,25 @@ async function main() {
 
 
     // Attach an event listner to each song
-    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e=>{
-        e.addEventListener("click", element=> {
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
             console.log(e.querySelector(".info").firstElementChild.innerHTML);
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
+    })
+
+
+
+    // Attach an event listener to play, next and previous button
+    play.addEventListener("click", () => {
+        if (currentSong.paused) {
+            currentSong.play();
+            play.src = "./pausesong.svg"
+        }
+        else {
+            currentSong.pause()
+            play.src = "./playsong.svg"
+        }
     })
 }
 
