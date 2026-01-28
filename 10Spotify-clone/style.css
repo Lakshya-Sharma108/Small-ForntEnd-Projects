@@ -202,6 +202,17 @@ button>* {
     margin-bottom: 44px;
 }
 
+.hamburger{
+    display: none;
+}
+
+.hamburgerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
 .songList ul {
     padding: 0 12px;
 }
@@ -245,6 +256,7 @@ button>* {
     bottom: 0;
     border-radius: 10px;
     margin: 8px;
+    cursor: pointer;
 }
 
 .circle {
@@ -269,4 +281,35 @@ button>* {
 .abovebar{
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 1400px) {
+    .left{
+        position: absolute;
+        left: -120%;
+        transition: all .3s;
+        z-index: 1;
+        width: 355px;
+        background-color: black;
+    }
+
+    .left .close{
+        position: absolute;
+        right: 31px;
+        top: 25px;
+        width: 29px;
+        cursor: pointer;
+    }
+
+    .right{
+        width: 100vw;
+    }
+
+    .playbar{
+        width: 95vw;
+    }
+
+    .hamburger{
+        display: block;
+    }
 }
