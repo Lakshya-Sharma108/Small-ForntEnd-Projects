@@ -2,6 +2,16 @@
 
 let currentSong = new Audio();
 
+function formatTime(seconds) {
+    const totalSeconds = Math.floor(seconds);
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+
+
 async function getSongs() {
     let a = await fetch("http://127.0.0.1:5500/10Spotify-clone/songs/");
     let response = await a.text();
@@ -27,21 +37,30 @@ async function getSongs() {
 }
 
 
-const playMusic = (track) => {
+const playMusic = (track, pause = false) => {
     console.log("Attempting to play:", track);
     // Use the full path including 10Spotify-clone
     // let audio = new Audio("/10Spotify-clone/songs/" + track);
 
     currentSong.src = "/10Spotify-clone/songs/" + track;
-    currentSong.play()
-    play.src = "./pausesong.svg"
+
+    if (!pause) {
+        currentSong.play()
+        play.src = "./pausesong.svg"
+    }
+
+
+    document.querySelector(".songinfo").innerHTML = track;
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
 }
 
 
 async function main() {
     // Get the list of all songs
     let songs = await getSongs();
-    console.log(songs);
+    // console.log(songs);
+
+    playMusic(songs[0], true);
 
     // Displaying songs in library
     let songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -79,6 +98,17 @@ async function main() {
             currentSong.pause()
             play.src = "./playsong.svg"
         }
+    })
+
+
+
+    // Event for time update
+    currentSong.addEventListener("timeupdate", () => {
+        console.log(currentSong.currentTime, currentSong.duration);
+
+        document.querySelector(".songtime").innerHTML = `${formatTime(currentSong.currentTime)}/${formatTime(currentSong.duration)}`
+
+        document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration) * 100 + "%";
     })
 }
 

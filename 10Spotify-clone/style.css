@@ -261,3 +261,12 @@ button>* {
 .songbuttons img {
     cursor: pointer;
 }
+
+.songinfo, .songtime{
+    color: black;
+}
+
+.abovebar{
+    display: flex;
+    justify-content: space-between;
+}
