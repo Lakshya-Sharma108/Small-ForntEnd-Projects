@@ -187,7 +187,7 @@ button>* {
     width: 90%;
     padding: 12px;
     width: 70vw;
-    height: 40px;
+    min-height: 40px;
 }
 
 .songbuttons {
@@ -202,11 +202,11 @@ button>* {
     margin-bottom: 44px;
 }
 
-.hamburger{
+.hamburger {
     display: none;
 }
 
-.hamburgerContainer{
+.hamburgerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -274,17 +274,19 @@ button>* {
     cursor: pointer;
 }
 
-.songinfo, .songtime{
+.songinfo,
+.songtime {
     color: black;
 }
 
-.abovebar{
+.abovebar {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
 }
 
 @media (max-width: 1400px) {
-    .left{
+    .left {
         position: absolute;
         left: -120%;
         transition: all .3s;
@@ -293,7 +295,7 @@ button>* {
         background-color: black;
     }
 
-    .left .close{
+    .left .close {
         position: absolute;
         right: 31px;
         top: 25px;
@@ -301,15 +303,28 @@ button>* {
         cursor: pointer;
     }
 
-    .right{
+    .right {
         width: 100vw;
     }
 
-    .playbar{
-        width: 95vw;
+    .playbar {
+        width: calc(100vw - 60px);
     }
 
-    .hamburger{
+    .seekbar {
+        width: calc(100vw - 80px);
+    }
+
+    .hamburger {
         display: block;
+    }
+
+    .card {
+        width: 70vw;
+    }
+
+    .cardContainer {
+        margin: 10px 0 0 0;
+        justify-content: center;
     }
 }
