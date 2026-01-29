@@ -7,6 +7,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+.close{
+    display: none;
+}
+
 body {
     background-color: black;
     color: white;
@@ -291,7 +295,7 @@ button>* {
         left: -120%;
         transition: all .3s;
         z-index: 1;
-        width: 355px;
+        width: 352px;
         background-color: black;
     }
 
@@ -315,6 +319,10 @@ button>* {
         width: calc(100vw - 80px);
     }
 
+    .right{
+        margin: 0;
+    }
+
     .hamburger {
         display: block;
     }
@@ -326,5 +334,19 @@ button>* {
     .cardContainer {
         margin: 10px 0 0 0;
         justify-content: center;
+    }
+
+    .close{
+        display: block;
+    }
+
+    .songbuttons img{
+        width: 35px;
+    }
+
+    .abovebar{
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
     }
 }
