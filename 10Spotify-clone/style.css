@@ -7,7 +7,7 @@
     font-family: "Roboto", sans-serif;
 }
 
-.close{
+.close {
     display: none;
 }
 
@@ -319,7 +319,7 @@ button>* {
         width: calc(100vw - 80px);
     }
 
-    .right{
+    .right {
         margin: 0;
     }
 
@@ -336,15 +336,15 @@ button>* {
         justify-content: center;
     }
 
-    .close{
+    .close {
         display: block;
     }
 
-    .songbuttons img{
+    .songbuttons img {
         width: 35px;
     }
 
-    .abovebar{
+    .abovebar {
         flex-direction: column;
         gap: 23px;
         align-items: center;

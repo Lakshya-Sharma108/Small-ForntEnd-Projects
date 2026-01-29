@@ -122,13 +122,13 @@ async function main() {
 
 
     // Add an eventlistner for hamburger
-    document.querySelector(".hamburger").addEventListener("click", ()=>{
+    document.querySelector(".hamburger").addEventListener("click", () => {
         document.querySelector(".left").style.left = "0";
     })
 
 
     // Add an eventlistner for close button
-    document.querySelector(".close").addEventListener("click", ()=>{
+    document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-120%";
     })
 }
