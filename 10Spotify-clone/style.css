@@ -282,15 +282,31 @@ button>* {
     cursor: pointer;
 }
 
-.songinfo,
+.timevol{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.songinfo {
+    color: black;
+    padding: 0, 12px;
+    font-size: large;
+    width: 250px;
+}
+
 .songtime {
     color: black;
     padding: 0, 12px;
     font-size: large;
+    width: 125px;
 }
 
-.songinfo {
-    width: 250px;
+.volume{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .abovebar {
@@ -321,6 +337,14 @@ button>* {
         top: 25px;
         width: 29px;
         cursor: pointer;
+    }
+
+    .timevol{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        gap: 13px;
     }
 
     .right {
