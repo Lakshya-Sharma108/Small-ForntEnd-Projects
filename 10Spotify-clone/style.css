@@ -306,7 +306,7 @@ button>* {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
 }
 
 .abovebar {
@@ -315,7 +315,7 @@ button>* {
     margin: 20px 0;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
     .left {
         position: absolute;
         left: -120%;
@@ -368,7 +368,7 @@ button>* {
     }
 
     .card {
-        width: 70vw;
+        width: 44vw;
     }
 
     .cardContainer {
@@ -388,5 +388,12 @@ button>* {
         flex-direction: column;
         gap: 23px;
         align-items: center;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .card{
+        width: 80vw;
     }
 }
