@@ -1,6 +1,6 @@
 // Let's write some js:
-
 let currentSong = new Audio();
+let songs;
 
 function formatTime(seconds) {
     const totalSeconds = Math.floor(seconds);
@@ -57,7 +57,7 @@ const playMusic = (track, pause = false) => {
 
 async function main() {
     // Get the list of all songs
-    let songs = await getSongs();
+    songs = await getSongs();
     // console.log(songs);
 
     playMusic(songs[0], true);
@@ -130,6 +130,31 @@ async function main() {
     // Add an eventlistner for close button
     document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-120%";
+    })
+
+
+    // Add an event listner for previous
+    previous.addEventListener("click", () => {
+        console.log("previous is clicked");
+        console.log(currentSong);
+
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if ((index - 1) >= 0) {
+            playMusic(songs[index - 1])
+        }
+
+    })
+
+    // Add an event listner for next
+    next.addEventListener("click", () => {
+        console.log("next is clicked");
+        console.log(currentSong);
+
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if ((index + 1) > length) {
+            playMusic(songs[index + 1])
+        }
+
     })
 }
 
