@@ -2,12 +2,32 @@
 let currentSong = new Audio();
 let songs;
 
-function formatTime(seconds) {
-    const totalSeconds = Math.floor(seconds);
-    const mins = Math.floor(totalSeconds / 60);
-    const secs = totalSeconds % 60;
+// function formatTime(seconds) {
+//     const totalSeconds = Math.floor(seconds);
+//     const mins = Math.floor(totalSeconds / 60);
+//     const secs = totalSeconds % 60;
 
-    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+//     let result = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+//     if (result == NaN) {
+//         return "00:00"
+//     }else{
+//         return result;
+//     }
+// }
+
+
+function formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) {
+        return "00:00";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedMinutes}:${formattedSeconds}`;
 }
 
 
@@ -135,6 +155,7 @@ async function main() {
 
     // Add an event listner for previous
     previous.addEventListener("click", () => {
+        currentSong.pause();
         console.log("previous is clicked");
         console.log(currentSong);
 
@@ -147,15 +168,20 @@ async function main() {
 
     // Add an event listner for next
     next.addEventListener("click", () => {
+        currentSong.pause();
         console.log("next is clicked");
         console.log(currentSong);
 
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
-        if ((index + 1) > length) {
+        if ((index + 1) < songs.length) {
             playMusic(songs[index + 1])
         }
 
     })
+
+
+    // console.log(songs);
+
 }
 
 main();

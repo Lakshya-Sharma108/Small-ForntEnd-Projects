@@ -239,6 +239,10 @@ button>* {
     width: 344px;
 }
 
+.info div {
+    word-break: break-all;
+}
+
 .playnow {
     display: flex;
     justify-content: center;
@@ -281,6 +285,12 @@ button>* {
 .songinfo,
 .songtime {
     color: black;
+    padding: 0, 12px;
+    font-size: large;
+}
+
+.songinfo {
+    width: 250px;
 }
 
 .abovebar {
@@ -297,6 +307,12 @@ button>* {
         z-index: 1;
         width: 352px;
         background-color: black;
+        padding: 0;
+    }
+
+    .songinfo,
+    .songtime {
+        width: auto;
     }
 
     .left .close {
