@@ -57,7 +57,7 @@ async function getSongs(folder) {
             // console.log(element.href);
             
             songs.push(element.href.split(`${folder}`)[1])
-            console.log(element.href.split("/ncs/")[1]);
+            // console.log(element.href.split("/ncs/")[1]);
         }
     }
     // console.log(songs);
@@ -106,7 +106,24 @@ const playMusic = (track, pause = false) => {
 
     document.querySelector(".songinfo").innerHTML = track;
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
+}
 
+
+async function displayAlbums() {
+    let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/`);
+    let response = await a.text();
+    let div = document.createElement("div");
+    div.innerHTML = response;
+
+    let anchors = div.getElementsByTagName("a");
+    Array.from(anchors).forEach(e=>{
+        // console.log(e.href);
+        if (e.href.includes("/songs")) {
+            console.log(e.href.split("/").slice(-2)[1]);
+        }
+    })
+    // console.log(div);
+    
 }
 
 
@@ -118,6 +135,8 @@ async function main() {
 
 
     // Display all the albums on the page
+    displayAlbums();
+
 
     // Attach an event listener to play, next and previous button
     play.addEventListener("click", () => {
