@@ -319,6 +319,10 @@ button>* {
     gap: 4px;
 }
 
+.volume img{
+    cursor: pointer;
+}
+
 .abovebar {
     display: flex;
     justify-content: space-between;
@@ -408,5 +412,3 @@ button>* {
     }
 }
 
-
-/* 4:05:20 */

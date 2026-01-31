@@ -1,6 +1,7 @@
 // Let's write some js:
 let currentSong = new Audio();
 let songs;
+let currFolder;
 
 // function formatTime(seconds) {
 //     const totalSeconds = Math.floor(seconds);
@@ -32,59 +33,43 @@ function formatTime(seconds) {
 
 
 
-async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5500/10Spotify-clone/songs/");
+async function getSongs(folder) {
+    currFolder = folder;
+    let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/${folder}/`);
     let response = await a.text();
     // console.log(response);
 
 
     let div = document.createElement("div");
     div.innerHTML = response;
+    // console.log(div);
+    
     let as = div.getElementsByTagName("a")
     // console.log(as);
 
 
-    let songs = [];
+    songs = [];
     for (let i = 0; i < as.length; i++) {
         const element = as[i];
-
+        // console.log(as[i]);
+        
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("/songs/")[1])
+            // console.log(element.href);
+            
+            songs.push(element.href.split(`${folder}`)[1])
+            console.log(element.href.split("/ncs/")[1]);
         }
     }
     // console.log(songs);
-    return songs;
-}
+    
 
 
-const playMusic = (track, pause = false) => {
-    console.log("Attempting to play:", track);
-    // Use the full path including 10Spotify-clone
-    // let audio = new Audio("/10Spotify-clone/songs/" + track);
-
-    currentSong.src = "/10Spotify-clone/songs/" + track;
-
-    if (!pause) {
-        currentSong.play()
-        play.src = "./pausesong.svg"
-    }
-
-
-    document.querySelector(".songinfo").innerHTML = track;
-    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
-}
-
-
-async function main() {
-    // Get the list of all songs
-    songs = await getSongs();
-    // console.log(songs);
-
-    playMusic(songs[0], true);
+    
 
     // Displaying songs in library
     let songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
-    for (const song of songs) {
+    songUl.innerHTML = "";
+    for (const song of songs) {        
         songUl.innerHTML = songUl.innerHTML + `<li>
                                 <img class="invert" src="./music.svg" alt="">
                                 <div class="info">
@@ -105,8 +90,34 @@ async function main() {
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
     })
+}
 
 
+const playMusic = (track, pause = false) => {
+    console.log("Attempting to play:", track);
+    // Use the full path including 10Spotify-clone
+    // let audio = new Audio("/10Spotify-clone/songs/" + track);
+
+    currentSong.src = `/10Spotify-clone/songs/${currFolder}/` + track;
+    if (!pause) {
+        currentSong.play()
+        play.src = "./pausesong.svg"
+    }
+
+    document.querySelector(".songinfo").innerHTML = track;
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
+
+}
+
+
+async function main() {
+    // Get the list of all songs
+    await getSongs("/ncs/");
+    // console.log(songs);
+    playMusic(songs[0], true);
+
+
+    // Display all the albums on the page
 
     // Attach an event listener to play, next and previous button
     play.addEventListener("click", () => {
@@ -187,8 +198,16 @@ async function main() {
         currentSong.volume = parseInt(e.target.value) / 100;
     })
 
-}
 
+
+
+    // Load the playlist whenever card is clicked
+    Array.from(document.getElementsByClassName("card")).forEach(e=>{
+        e.addEventListener("click", async item=>{
+            songs = await getSongs(`/${item.currentTarget.dataset.folder}`)
+        })
+    })
+}
 main();
 
 

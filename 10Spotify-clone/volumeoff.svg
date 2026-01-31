@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <!-- Tension lines -->
+  <path d="M7 6v12" stroke="#000" stroke-width="2"/>
+  <path d="M12 4v16" stroke="#000" stroke-width="2"/>
+  <path d="M17 7v10" stroke="#000" stroke-width="2"/>
+
+  <!-- Mute slash -->
+  <line x1="4" y1="20" x2="20" y2="4" stroke="#000" stroke-width="2"/>
+</svg>
