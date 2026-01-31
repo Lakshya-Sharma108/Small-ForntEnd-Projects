@@ -43,7 +43,7 @@ async function getSongs(folder) {
     let div = document.createElement("div");
     div.innerHTML = response;
     // console.log(div);
-    
+
     let as = div.getElementsByTagName("a")
     // console.log(as);
 
@@ -52,24 +52,24 @@ async function getSongs(folder) {
     for (let i = 0; i < as.length; i++) {
         const element = as[i];
         // console.log(as[i]);
-        
+
         if (element.href.endsWith(".mp3")) {
             // console.log(element.href);
-            
+
             songs.push(element.href.split(`${folder}`)[1])
             // console.log(element.href.split("/ncs/")[1]);
         }
     }
     // console.log(songs);
-    
 
 
-    
+
+
 
     // Displaying songs in library
     let songUl = document.querySelector(".songList").getElementsByTagName("ul")[0];
     songUl.innerHTML = "";
-    for (const song of songs) {        
+    for (const song of songs) {
         songUl.innerHTML = songUl.innerHTML + `<li>
                                 <img class="invert" src="./music.svg" alt="">
                                 <div class="info">
@@ -108,7 +108,6 @@ const playMusic = (track, pause = false) => {
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
 }
 
-
 async function displayAlbums() {
     let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/`);
     let response = await a.text();
@@ -116,16 +115,38 @@ async function displayAlbums() {
     div.innerHTML = response;
 
     let anchors = div.getElementsByTagName("a");
-    Array.from(anchors).forEach(e=>{
+    let cardContainer = document.querySelector(".cardContainer")
+    
+    Array.from(anchors).forEach(async e => {
         // console.log(e.href);
         if (e.href.includes("/songs")) {
-            console.log(e.href.split("/").slice(-2)[1]);
+            let folder = e.href.split("/").slice(-2)[1];
+
+            // Get the metadata of folder
+            let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/${folder}/info.json`);
+            let response = await a.json();
+            console.log(response);
+
+            cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="ncs" class="card">
+                        <div class="play">
+                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true">
+                                <!-- Green circle -->
+                                <circle cx="32" cy="32" r="26" fill="#1DB954" />
+
+                                <!-- Play icon -->
+                                <polygon points="26,20 26,44 46,32" fill="#000000" />
+                            </svg>
+                        </div>
+                        <img src="songs/${folder}/cover.jpeg" alt="">
+                        <h2>${response.title}</h2>
+                        <p>${response.description}</p>
+                    </div>`
         }
     })
     // console.log(div);
-    
-}
 
+}
 
 async function main() {
     // Get the list of all songs
@@ -221,8 +242,8 @@ async function main() {
 
 
     // Load the playlist whenever card is clicked
-    Array.from(document.getElementsByClassName("card")).forEach(e=>{
-        e.addEventListener("click", async item=>{
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", async item => {
             songs = await getSongs(`/${item.currentTarget.dataset.folder}`)
         })
     })
