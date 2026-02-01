@@ -69,14 +69,14 @@ async function getSongs(folder) {
     songUl.innerHTML = "";
     for (const song of songs) {
         songUl.innerHTML = songUl.innerHTML + `<li>
-                                <img class="invert" src="./music.svg" alt="">
+                                <img class="invert" src="./Images/music.svg" alt="">
                                 <div class="info">
                                     <div> ${song.replaceAll("%20", " ")}</div>
                                     <div>Lakshaya</div>
                                 </div>
                                 <div class="playnow">
                                     <span>Play Now</span>
-                                    <img class="invert" src="./playsong.svg" alt="">
+                                    <img class="invert" src="./Images/playsong.svg" alt="">
                                 </div></li>`;
     }
 
@@ -88,6 +88,9 @@ async function getSongs(folder) {
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
     })
+
+
+    return songs;
 }
 
 
@@ -102,7 +105,7 @@ const playMusic = (track, pause = false) => {
     currentSong.src = `/10Spotify-clone/songs/${currFolder}/` + track;
     if (!pause) {
         currentSong.play()
-        play.src = "./pausesong.svg"
+        play.src = "./Images/pausesong.svg"
     }
 
     document.querySelector(".songinfo").innerHTML = track;
@@ -151,6 +154,7 @@ async function displayAlbums() {
         let card = item.target.closest(".card");
         if (!card) return;
         songs = await getSongs(`/${card.dataset.folder}`);
+        playMusic(songs[0]);
     });
 }
 
@@ -173,11 +177,11 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentSong.paused) {
             currentSong.play();
-            play.src = "./pausesong.svg"
+            play.src = "./Images/pausesong.svg"
         }
         else {
             currentSong.pause()
-            play.src = "./playsong.svg"
+            play.src = "./Images/playsong.svg"
         }
     })
 
@@ -218,7 +222,10 @@ async function main() {
         console.log("previous is clicked");
         // console.log(currentSong);
 
+        console.log(songs.indexOf(currentSong.src.split("/").slice(-1)[0]));
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+
+
         if ((index - 1) >= 0) {
             playMusic(songs[index - 1])
         }
