@@ -33,6 +33,8 @@ function formatTime(seconds) {
 
 
 
+
+
 async function getSongs(folder) {
     currFolder = folder;
     let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/${folder}/`);
@@ -60,10 +62,6 @@ async function getSongs(folder) {
             // console.log(element.href.split("/ncs/")[1]);
         }
     }
-    // console.log(songs);
-
-
-
 
 
     // Displaying songs in library
@@ -93,6 +91,9 @@ async function getSongs(folder) {
 }
 
 
+
+
+
 const playMusic = (track, pause = false) => {
     console.log("Attempting to play:", track);
     // Use the full path including 10Spotify-clone
@@ -108,6 +109,10 @@ const playMusic = (track, pause = false) => {
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
 }
 
+
+
+
+
 async function displayAlbums() {
     let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/`);
     let response = await a.text();
@@ -115,38 +120,43 @@ async function displayAlbums() {
     div.innerHTML = response;
 
     let anchors = div.getElementsByTagName("a");
-    let cardContainer = document.querySelector(".cardContainer")
-    
-    Array.from(anchors).forEach(async e => {
-        // console.log(e.href);
+    let cardContainer = document.querySelector(".cardContainer");
+    let array = Array.from(anchors);
+
+    array.forEach(async e => {
         if (e.href.includes("/songs")) {
             let folder = e.href.split("/").slice(-2)[1];
 
-            // Get the metadata of folder
             let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/${folder}/info.json`);
             let response = await a.json();
-            console.log(response);
 
-            cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="ncs" class="card">
-                        <div class="play">
-                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true">
-                                <!-- Green circle -->
-                                <circle cx="32" cy="32" r="26" fill="#1DB954" />
-
-                                <!-- Play icon -->
-                                <polygon points="26,20 26,44 46,32" fill="#000000" />
-                            </svg>
-                        </div>
-                        <img src="songs/${folder}/cover.jpeg" alt="">
-                        <h2>${response.title}</h2>
-                        <p>${response.description}</p>
-                    </div>`
+            cardContainer.innerHTML = cardContainer.innerHTML + `
+                <div data-folder="${folder}" class="card">
+                    <div class="play">
+                        <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle cx="32" cy="32" r="26" fill="#1DB954" />
+                            <polygon points="26,20 26,44 46,32" fill="#000000" />
+                        </svg>
+                    </div>
+                    <img src="songs/${folder}/cover.jpeg" alt="">
+                    <h2>${response.title}</h2>
+                    <p>${response.description}</p>
+                </div>`;
         }
-    })
-    // console.log(div);
+    });
 
+
+    // Load the playlist whenever card is clicked (fixed)
+    cardContainer.addEventListener("click", async (item) => {
+        let card = item.target.closest(".card");
+        if (!card) return;
+        songs = await getSongs(`/${card.dataset.folder}`);
+    });
 }
+
+
+
+
 
 async function main() {
     // Get the list of all songs
@@ -172,7 +182,6 @@ async function main() {
     })
 
 
-
     // Event for time update time
     currentSong.addEventListener("timeupdate", () => {
         // console.log(currentSong.currentTime, currentSong.duration);
@@ -189,7 +198,6 @@ async function main() {
         currentSong.currentTime = ((currentSong.duration) * percent) / 100;
 
     })
-
 
 
     // Add an eventlistner for hamburger
@@ -231,29 +239,15 @@ async function main() {
     })
 
 
-
     // Add and event to volume
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         console.log("setting volume to : ", e.target.value, "/100");
         currentSong.volume = parseInt(e.target.value) / 100;
     })
-
-
-
-
-    // Load the playlist whenever card is clicked
-    Array.from(document.getElementsByClassName("card")).forEach(e => {
-        e.addEventListener("click", async item => {
-            songs = await getSongs(`/${item.currentTarget.dataset.folder}`)
-        })
-    })
 }
+
+
+
+
 main();
 
-
-
-// what we did till now:
-// 1. Fetch the list of songs from the server
-// 2. Parse the response to get the song names
-// 3. Display the song names in the UI
-// 4. Attach event listeners to each song item to play the song when clicked
