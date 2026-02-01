@@ -138,7 +138,7 @@ async function displayAlbums() {
                             <polygon points="26,20 26,44 46,32" fill="#000000" />
                         </svg>
                     </div>
-                    <img src="songs/${folder}/cover.jpeg" alt="">
+                    <img src="songs/${folder}/cover2.jpg" alt="">
                     <h2>${response.title}</h2>
                     <p>${response.description}</p>
                 </div>`;
@@ -246,12 +246,12 @@ async function main() {
     })
 
     // Add event to mute volume
-    document.querySelector(".volume>img").addEventListener("click", e=>{
+    document.querySelector(".volume>img").addEventListener("click", e => {
         if (e.target.src.includes("volume.svg")) {
             e.target.src = e.target.src.replace("volume.svg", "volumeoff.svg")
             currentSong.volume = 0;
             document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
-        }else{
+        } else {
             e.target.src = e.target.src.replace("volumeoff.svg", "volume.svg")
             currentSong.volume = .35;
             document.querySelector(".range").getElementsByTagName("input")[0].value = 35;
