@@ -317,9 +317,10 @@ button>* {
     justify-content: center;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 }
 
-.volume img{
+.range input{
     cursor: pointer;
 }
 
