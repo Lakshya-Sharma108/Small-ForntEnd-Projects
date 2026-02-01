@@ -33,9 +33,9 @@ body {
 .home ul li {
     display: flex;
     gap: 15px;
-    width: 14px;
+    width: 26px;
     list-style: none;
-    padding-top: 14px;
+    padding-top: 8px;
     font-weight: bold;
 }
 
@@ -245,6 +245,10 @@ button>* {
     border-radius: 5px;
 }
 
+.songList ul li:hover {
+    background-color: rgb(31, 31, 31);
+}
+
 .songList .info {
     font-size: 13px;
     width: 344px;
@@ -321,7 +325,7 @@ button>* {
     cursor: pointer;
 }
 
-.range input{
+.range input {
     cursor: pointer;
 }
 
@@ -413,4 +417,3 @@ button>* {
         width: 80vw;
     }
 }
-
