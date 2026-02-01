@@ -1,6 +1,6 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="260"
+  width="300"
   height="90"
   viewBox="0 0 260 90"
 >
@@ -8,31 +8,31 @@
   <rect
     x="0"
     y="20"
-    width="44"
+    width="54"
     height="50"
     fill="none"
     stroke="#0E3BF0"
-    stroke-width="2"
+    stroke-width="3"
   />
 
   <!-- Rhythm bars -->
   <!-- Bar 1 (unchanged) -->
-  <rect x="6"  y="40" width="6" height="30" fill="#0E3BF0"/>
+  <rect x="8"  y="40" width="7" height="30" fill="#0E3BF0"/>
 
   <!-- Bar 2 (matches text height: 42) -->
-  <rect x="15" y="28" width="6" height="42" fill="#0E3BF0"/>
+  <rect x="19" y="28" width="7" height="42" fill="#0E3BF0"/>
 
   <!-- Bar 3 (unchanged) -->
-  <rect x="24" y="45" width="6" height="25" fill="#0E3BF0"/>
+  <rect x="29" y="45" width="7" height="25" fill="#0E3BF0"/>
 
   <!-- Bar 4 (matches text height: 42) -->
-  <rect x="34" y="28" width="6" height="42" fill="#0E3BF0"/>
+  <rect x="40" y="28" width="7" height="42" fill="#0E3BF0"/>
 
   <!-- Text -->
   <text
-    x="52"
+    x="64"
     y="60"
-    font-size="42"
+    font-size="44"
     font-family="Inter, Poppins, Segoe UI, sans-serif"
     font-weight="700"
     fill="#000000"
