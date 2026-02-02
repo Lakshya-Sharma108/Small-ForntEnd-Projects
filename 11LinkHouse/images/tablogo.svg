@@ -1,0 +1,26 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+>
+  <!-- House outline (bold) -->
+  <path
+    d="M8 30 L32 10 L56 30 V56 H8 Z"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="4.5"
+    stroke-linejoin="round"
+  />
+
+  <!-- Link nodes (bigger dots) -->
+  <circle cx="24" cy="34" r="3.5" fill="#ffffff"/>
+  <circle cx="40" cy="34" r="3.5" fill="#ffffff"/>
+  <circle cx="32" cy="46" r="3.5" fill="#ffffff"/>
+
+  <!-- Link connections (thicker lines) -->
+  <line x1="24" y1="34" x2="32" y2="46"
+        stroke="#ffffff" stroke-width="3"/>
+  <line x1="40" y1="34" x2="32" y2="46"
+        stroke="#ffffff" stroke-width="3"/>
+</svg>
