@@ -25,7 +25,7 @@ async function getSongs(folder) {
     currFolder = folder.replaceAll("/", "");
 
     // Fetch folder HTML (Live Server directory listing)
-    let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/${currFolder}/`);
+    let a = await fetch(`/10Spotify-clone/songs/${currFolder}/`);
     let response = await a.text();
 
     // Convert HTML string to DOM
@@ -95,7 +95,7 @@ function playMusic(track, pause = false) {
 // DISPLAY ALBUMS
 // -------------------------
 async function displayAlbums() {
-    let a = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/`);
+    let a = await fetch(`/10Spotify-clone/songs/`);
     let response = await a.text();
 
     let div = document.createElement("div");
@@ -110,7 +110,7 @@ async function displayAlbums() {
         let folder = e.href.split("/").filter(Boolean).pop();
 
         try {
-            let res = await fetch(`http://127.0.0.1:5500/10Spotify-clone/songs/${folder}/info.json`);
+            let res = await fetch(`/10Spotify-clone/songs/${folder}/info.json`);
             let info = await res.json();
 
             cardContainer.innerHTML += `
@@ -145,7 +145,7 @@ async function displayAlbums() {
 // -------------------------
 async function main() {
     // Load default playlist
-    await getSongs("ncs");
+    await getSongs("favroite");
     playMusic(songs[0], true);
 
     // Load albums
