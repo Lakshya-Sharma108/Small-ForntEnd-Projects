@@ -117,7 +117,7 @@ async function displayAlbums() {
             <div class="card" data-folder="${folder}">
                 <div class="play">
                     <svg width="64" height="64" viewBox="0 0 64 64">
-                        <circle cx="32" cy="32" r="26" fill="#1DB954"/>
+                        <circle cx="32" cy="32" r="26" fill="#f1c40f"/>
                         <polygon points="26,20 26,44 46,32" fill="#000"/>
                     </svg>
                 </div>
