@@ -24,7 +24,7 @@ body {
     color: black;
     font-size: 35px;
     margin-top: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     padding: 10px;
     background-color: wheat;
     border-radius: 15px;
@@ -128,9 +128,10 @@ body {
 .about {
     width: 63vw;
     height: auto;
-    background-color: rgb(255, 244, 221);
-    border: 5px solid white;
-    border-radius: 10px;
+    background-color: rgb(200, 255, 202);
+    border-top: 8px solid rgb(0, 165, 0);
+    /* border: 5px solid white; */
+    /* border-radius: 10px;  */
     padding: 5px;
     margin-top: 50px;
     display: none;
