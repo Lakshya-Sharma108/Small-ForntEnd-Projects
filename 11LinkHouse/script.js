@@ -26,6 +26,10 @@ let obj = [
         "title": "Portfolio",
         "description": "A personal portfolio showcasing my projects, skills, and work experience. Built to highlight real-world development and problem-solving abilities"
     },
+    {
+        "title": "Quote-of-the-day",
+        "description": "Words have weight when chosen well.This project brings a single quote each day to inspire clarity, reflection, and quiet motivation"
+    },
 ]
 
 
