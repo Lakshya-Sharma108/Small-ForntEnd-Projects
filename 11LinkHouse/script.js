@@ -4,7 +4,7 @@ let icon = document.querySelectorAll(".parentBox");
 
 
 
-
+// Event for removing the info 
 cross.addEventListener("click", () => {
     document.querySelector(".info").style.display = "none";
 })
@@ -12,7 +12,7 @@ cross.addEventListener("click", () => {
 
 
 
-
+// Object with values of each cards about section
 let obj = [
     {
         "title": "RagRekha",
@@ -29,6 +29,8 @@ let obj = [
 ]
 
 
+
+// Adding event for each card
 about.forEach(a => {
     a.addEventListener("click", e => {
         for (let i = 0; i < obj.length; i++) {
@@ -41,6 +43,12 @@ about.forEach(a => {
     })
 })
 
+
+
+
+// Footer with updated year
+let year = document.getElementById("year");
+year.textContent = new Date().getFullYear();
 
 
 

@@ -26,7 +26,7 @@ body {
     margin-top: 20px;
     margin-bottom: 60px;
     padding: 10px;
-    background-color: wheat;
+    background-color: #ffdd95;
     border-radius: 15px;
 }
 
@@ -107,13 +107,13 @@ body {
 .parentBox a {
     text-decoration: none;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     color: white;
     background-color: orange;
     margin-top: 10px;
-    padding-top: 5px;
+    padding-top: 0px;
     width: 80%;
-    height: 35px;
+    height: auto;
     text-align: center;
     border-radius: 8px;
     border: 1px solid black;
@@ -122,36 +122,62 @@ body {
 .parentBox a:hover {
     color: orange;
     background-color: white;
-    transition: all .1s;
+    transition: all .5s;
+}
+
+.aboutparent{
+    width: 65vw;
+    height: 300px;
+    border: 5px solid red;
 }
 
 .about {
     width: 63vw;
     height: auto;
-    background-color: rgb(200, 255, 202);
-    border-top: 8px solid rgb(0, 165, 0);
-    /* border: 5px solid white; */
-    /* border-radius: 10px;  */
+    background-color: #121315;
+    border-left: 8px solid #ffdd95;
     padding: 5px;
-    margin-top: 50px;
+    margin: 50px 0 50px 0;
     display: none;
 }
 
 .about h1 {
     padding: 5px 0 2px 2px;
+    color: #ffdd95;
+    margin-left: 10px;
 }
 
 .about h2 {
     padding: 2px;
     margin-top: 20px;
     margin-bottom: 5px;
-    color: rgb(50, 50, 50);
+    margin-left: 10px;
+    color: #cccccc;
 }
 
 .about p {
-    /* margin: 0 0 0 12px; */
-    color: rgb(80, 80, 80);
+    margin: 0 0 10px 10px;
+    color: #cccccc;
     font-size: 22px;
+}
+
+
+.site-footer {
+  width: 100%;
+  padding: 15px 10px;
+  margin-top: 250px;
+  background-color: #0f0f0f45;
+  color: #bdbdbd;
+  text-align: center;
+  font-size: 16px;
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+}
+
+.site-footer p {
+  margin: 0;
+  line-height: 1.6;
 }
 
 
@@ -185,4 +211,9 @@ body {
         margin-left: 5px;
         margin-right: 5px;
     }
+
+    .site-footer {
+    font-size: 13px;
+    padding: 12px 8px;
+  }
 }
