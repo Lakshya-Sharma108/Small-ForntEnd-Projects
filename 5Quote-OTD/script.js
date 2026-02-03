@@ -6,21 +6,21 @@ const API_URL = "https://dummyjson.com/quotes/random";
 
 // Backup static quotes in case API fails
 const fallbackQuotes = [
-    { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-    { quote: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
-    { quote: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
-    { quote: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
-    { quote: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle" },
-    { quote: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
-    { quote: "The only impossible journey is the one you never begin.", author: "Tony Robbins" },
-    { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
-    { quote: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
-    { quote: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
-    { quote: "Your time is limited, don't waste it living someone else's life.", author: "Steve Jobs" },
-    { quote: "Whether you think you can or you think you can't, you're right.", author: "Henry Ford" },
-    { quote: "The only limit to our realization of tomorrow will be our doubts of today.", author: "Franklin D. Roosevelt" },
-    { quote: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
-    { quote: "Everything you've ever wanted is on the other side of fear.", author: "George Addair" }
+    { quote: "You have the right to perform your duty, but not to the fruits of your actions.", author: "Bhagavad Gita" },
+    { quote: "Change is the law of the universe. One who clings to the past or present is destined to miss the future.", author: "Bhagavad Gita" },
+    { quote: "A person is made by their belief. As they believe, so they become.", author: "Bhagavad Gita" },
+    { quote: "The mind is restless, turbulent, strong and obstinate, but it can be controlled by practice and detachment.", author: "Bhagavad Gita" },
+    { quote: "There is nothing lost or wasted in this life.", author: "Bhagavad Gita" },
+    { quote: "He who has no attachments can truly love others, for his love is pure and divine.", author: "Bhagavad Gita" },
+    { quote: "When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place.", author: "Bhagavad Gita" },
+    { quote: "The soul is neither born, nor does it die at any time.", author: "Bhagavad Gita" },
+    { quote: "As a person puts on new garments, giving up old ones, the soul accepts new bodies.", author: "Bhagavad Gita" },
+    { quote: "Let a man lift himself by his own self; let him not lower himself.", author: "Bhagavad Gita" },
+    { quote: "Truth alone triumphs, not falsehood.", author: "Mundaka Upanishad" },
+    { quote: "From ignorance, lead me to truth.", author: "Brihadaranyaka Upanishad" },
+    { quote: "You are what your deep, driving desire is.", author: "Upanishads" },
+    { quote: "The one who sees inaction in action, and action in inaction, is wise.", author: "Bhagavad Gita" },
+    { quote: "Peace comes from within. Do not seek it without.", author: "Buddha (Indian spiritual tradition)" }
 ];
 
 let usedFallbackIndices = [];
