@@ -2,7 +2,7 @@ const quote = document.getElementById("quote");
 const author = document.getElementById("author");
 
 // Using DummyJSON API which has CORS enabled and is reliable
-const API_URL = "https://dummyjson.com/quotes/random";
+//const API_URL = "https://dummyjson.com/quotes/random";
 
 // Backup static quotes in case API fails
 const fallbackQuotes = [
