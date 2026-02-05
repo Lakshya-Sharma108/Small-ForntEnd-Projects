@@ -666,7 +666,7 @@ body {
     }
 
     .box {
-        height: 180px;
+        height: 200px;
     }
 
     .project-link {
@@ -712,10 +712,16 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 450px) {
     .header {
+        width: 100vw;
         padding: 20px;
-        margin: 20px auto 40px;
+        margin: 20px 10px 40px 10px;
+    }
+
+    .info{
+        width: 100%;
+        margin: 0 5px 20px 5px;
     }
 
     .header h1 {
@@ -726,16 +732,48 @@ body {
         width: 6px;
     }
 
+    .info p {
+        font-size: 15px;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
+
+    /* .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    } */
 
     .about-close {
         width: 35px;
         height: 35px;
         font-size: 28px;
     }
+
+    .site-footer{
+        width: 110%;
+    }
+
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+    }
+
+    .footer-content p{
+        font-size: 13px;
+    }
 }
+
+
+/* @media (max-width: 350) {
+    .header {
+        width: 120vw;
+        padding: 10px;
+        margin: 10px 5px 20px 5px;
+    }
+} */
 
 
 /* Custom Scrollbar */
