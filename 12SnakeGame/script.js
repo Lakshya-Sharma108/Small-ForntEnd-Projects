@@ -18,7 +18,7 @@ const snake = [{
 {
     x: 1, y: 5
 }];
-let direction = "down";
+let direction = "left";
 
 
 // for (let i = 0; i < rows * cols; i++) {
@@ -46,3 +46,8 @@ function renderSnake() {
         blocks[`${segment.x},${segment.y}`].classList.add("fill");
     });
 }
+
+
+setInterval(() => {
+    renderSnake();
+}, 300);
