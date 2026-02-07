@@ -14,10 +14,11 @@ const timeElement = document.querySelector("#time");
 const blockHeight = 50;
 const blockWidth = 50;
 
-let highScore = 0;
+let highScore = localStorage.getItem("highScore") || 0;
 let score = 0;
 let time = `00-00`;
 
+highScoreElement.innerText = highScore;
 
 // Calculating how much blocks we can fit in the board
 const cols = Math.floor(board.clientWidth / blockWidth)
@@ -81,6 +82,7 @@ function renderSnake() {
     }
 
 
+    // Check if the snake hits the wall
     if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
         clearInterval(intervalId);
 
@@ -92,11 +94,21 @@ function renderSnake() {
     }
 
 
+    // Check if the snake eats the food
     if (head.x == food.x && head.y == food.y) {
         blocks[`${food.x},${food.y}`].classList.remove("food");
         food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) };
         blocks[`${food.x},${food.y}`].classList.add("food");
         snake.unshift(head);
+
+        score += 10;
+        scoreElement.innerText = score;
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("highScore", highScore.toString());
+            // highScoreElement.innerText = highScore;
+        }
     }
 
 
@@ -135,6 +147,13 @@ function restartGame() {
     snake.forEach(segment => {
         blocks[`${segment.x},${segment.y}`].classList.remove("fill");
     });
+
+    score = 0;
+    time = `00-00`;
+
+    scoreElement.innerText = score;
+    timeElement.innerText = time;
+    highScoreElement.innerText = highScore;
 
     modal.style.display = "none";
     direction = "down";
