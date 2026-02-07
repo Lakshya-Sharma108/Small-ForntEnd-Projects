@@ -185,7 +185,7 @@ section .infos {
 
 @media (max-width: 400px) {
     .infos {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: var(--space-xl);
     }
 
