@@ -32,6 +32,11 @@ const projectsData = [
         "description": "Words have weight when chosen well. This project brings a single quote each day to inspire clarity, reflection, and quiet motivation.",
         "tags": ["Quotes", "Daily", "Inspiration"]
     },
+    {
+        "title": "Snake-Game",
+        "description": "The Snake Game is a classic arcade game where the player controls a snake that grows in length. The objective is to eat food that appears on the board while avoiding collisions with the walls.",
+        "tags": ["Game", "Arcade", "JavaScript"]
+    },
 ];
 
 
