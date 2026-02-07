@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake game</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
         <section>
+
+            <!-- Infos -->
             <div class="infos">
                 <div class="info">
                     <h3>High Score: <span id="high-score">0</span></h3>
@@ -20,7 +24,24 @@
                     <h3>Time: <span id="time">00:00</span></h3>
                 </div>
             </div>
+
+            <!-- Board -->
             <div class="board">
+            </div>
+
+            <!-- Navigation Buttons for small screens -->
+            <div class="navigation">
+                <div class="up-navigation">
+                    <button class="btn nav-btn" data-direction="up">Up</button>
+                </div>
+                <div class="left-right-navigation">
+                    <button class="btn nav-btn" data-direction="left">Left</button>
+                    <button class="btn nav-btn" data-direction="right">Right</button>
+                </div>
+                <div class="down-navigation">
+                    <button class="btn nav-btn" data-direction="down">Down</button>
+                </div>
+
             </div>
         </section>
 
@@ -39,4 +60,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

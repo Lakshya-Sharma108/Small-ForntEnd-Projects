@@ -133,7 +133,7 @@ startBtn.addEventListener("click", () => {
         if (sec == 59) {
             min += 1;
             sec = 0;
-        }else {
+        } else {
             sec += 1;
         }
 
@@ -178,4 +178,22 @@ addEventListener("keydown", (event) => {
     } else if (event.key == "ArrowRight") {
         direction = "right";
     }
+});
+
+
+// Event listener for mobile controls
+document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        direction = btn.getAttribute("data-direction");
+
+        if (direction == "up") {
+            direction = "up";
+        } else if (direction == "down") {
+            direction = "down";
+        } else if (direction == "left") {
+            direction = "left";
+        } else if (direction == "right") {
+            direction = "right";
+        }
+    });
 });
