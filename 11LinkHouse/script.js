@@ -37,6 +37,21 @@ const projectsData = [
         "description": "The Snake Game is a classic arcade game where the player controls a snake that grows in length. The objective is to eat food that appears on the board while avoiding collisions with the walls.",
         "tags": ["Game", "Arcade", "JavaScript"]
     },
+    {
+        "title": "Digital-Clock",
+        "description": "A digital clock displaying the current time with hours, minutes, and seconds. It updates in real-time and provides a clear, easy-to-read interface.",
+        "tags": ["Clock", "Time", "Priority"]
+    },
+    {
+        "title": "Todo-List",
+        "description": "A simple and effective to-do list application to manage tasks and increase productivity. Add, edit, and delete tasks with ease.",
+        "tags": ["Productivity", "Tasks", "Discipline"]
+    },
+    {
+        "title": "Age-Calculator",
+        "description": "A simple age calculator that helps you determine your age based on your birthdate. Enter your birthdate and get your age instantly.",
+        "tags": ["Calculator", "Age", "JavaScript"]
+    },
 ];
 
 
