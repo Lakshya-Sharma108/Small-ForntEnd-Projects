@@ -94,9 +94,9 @@ function renderSnake() {
 }
 
 
-intervalId = setInterval(() => {
-    renderSnake();
-}, 400);
+// intervalId = setInterval(() => {
+//     renderSnake();
+// }, 400);
 
 
 addEventListener("keydown", (event) => {
