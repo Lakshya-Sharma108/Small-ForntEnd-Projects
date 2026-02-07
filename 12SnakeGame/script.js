@@ -1,6 +1,22 @@
 const board = document.querySelector(".board");
+const startBtn = document.querySelector(".btn-start");
+const modal = document.querySelector(".modal");
+const startGameModal = document.querySelector(".start-game");
+const gameOverModal = document.querySelector(".game-over");
+const restartBtn = document.querySelector(".btn-restart");
+
+
+const highScoreElement = document.querySelector("#high-score");
+const scoreElement = document.querySelector("#score");
+const timeElement = document.querySelector("#time");
+
+
 const blockHeight = 50;
 const blockWidth = 50;
+
+let highScore = 0;
+let score = 0;
+let time = `00-00`;
 
 
 // Calculating how much blocks we can fit in the board
@@ -12,7 +28,7 @@ let food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * 
 
 
 const blocks = [];
-const snake = [{
+let snake = [{
     x: 1, y: 3
 },];
 let direction = "down";
@@ -66,8 +82,13 @@ function renderSnake() {
 
 
     if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
-        alert("Game Over");
         clearInterval(intervalId);
+
+        modal.style.display = "flex";
+        startGameModal.style.display = "none";
+        gameOverModal.style.display = "flex";
+
+        return;
     }
 
 
@@ -97,6 +118,32 @@ function renderSnake() {
 // intervalId = setInterval(() => {
 //     renderSnake();
 // }, 400);
+
+
+startBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    intervalId = setInterval(() => {
+        renderSnake();
+    }, 400);
+});
+
+restartBtn.addEventListener("click", restartGame);
+
+
+function restartGame() {
+    blocks[`${food.x},${food.y}`].classList.remove("food");
+    snake.forEach(segment => {
+        blocks[`${segment.x},${segment.y}`].classList.remove("fill");
+    });
+
+    modal.style.display = "none";
+    direction = "down";
+    snake = [{ x: 1, y: 3 }];
+    food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) };
+    intervalId = setInterval(() => {
+        renderSnake();
+    }, 400);
+}
 
 
 addEventListener("keydown", (event) => {
