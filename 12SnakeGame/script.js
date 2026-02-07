@@ -7,12 +7,14 @@ const blockWidth = 50;
 const cols = Math.floor(board.clientWidth / blockWidth)
 const rows = Math.floor(board.clientHeight / blockHeight)
 
+let intervalId = null;
+
 
 const blocks = [];
 const snake = [{
     x: 1, y: 3
 },];
-let direction = "right";
+let direction = "down";
 
 
 // for (let i = 0; i < rows * cols; i++) {
@@ -42,7 +44,7 @@ function renderSnake() {
 }
 
 
-setInterval(() => {
+intervalId = setInterval(() => {
     let head = null;
     if (direction == "left") {
         head = {
@@ -54,8 +56,23 @@ setInterval(() => {
             x: snake[0].x,
             y: snake[0].y + 1
         }
+    }else if (direction == "down") {
+        head = {
+            x: snake[0].x + 1,
+            y: snake[0].y
+        }
+    }else if (direction == "up") {
+        head = {
+            x: snake[0].x - 1,
+            y: snake[0].y
+        }
     }
 
+
+    if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
+        alert("Game Over");
+        clearInterval(intervalId);
+    }
 
 
     snake.forEach(segment => {
@@ -67,3 +84,16 @@ setInterval(() => {
 
     renderSnake();
 }, 400);
+
+
+addEventListener("keydown", (event) => {
+    if (event.key == "ArrowUp") {
+        direction = "up";
+    }else if (event.key == "ArrowDown") {
+        direction = "down";
+    }else if (event.key == "ArrowLeft") {
+        direction = "left";
+    }else if (event.key == "ArrowRight") {
+        direction = "right";
+    }
+});
