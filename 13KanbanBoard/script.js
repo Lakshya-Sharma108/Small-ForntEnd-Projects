@@ -28,8 +28,8 @@ function addDragEventOnColumn(column) {
         e.preventDefault();
         column.classList.remove("hover-over");
     });
-    
-    
+
+
     column.addEventListener("dragover", (e) => {
         // console.log("dragover", e);
         e.preventDefault();
@@ -55,11 +55,34 @@ addDragEventOnColumn(done);
 const toggleModalBtn = document.querySelector("#toggle-modal");
 const modalBg = document.querySelector(".modal .bg");
 const modal = document.querySelector(".modal");
+const addTaskBtn = document.querySelector("#add-new-task");
 
 toggleModalBtn.addEventListener("click", () => {
     modal.classList.toggle("active");
 });
 
 modalBg.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
+
+addTaskBtn.addEventListener("click", () => {
+    const taskTitle = document.querySelector("#task-title-input").value;
+    const taskDesc = document.querySelector("#task-desc-input").value;
+
+    const div = document.createElement("div");
+    div.classList.add("task");
+    div.setAttribute("draggable", "true");
+    div.innerHTML = `
+        <h2>${taskTitle}</h2>
+        <p>${taskDesc}</p>
+        <button class="delete-btn">Delete</button>
+    `;
+
+    todo.appendChild(div);
+    div.addEventListener("drag", (e) => {
+        dragElement = div;
+    });
+
+
     modal.classList.remove("active");
 });
