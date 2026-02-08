@@ -42,6 +42,12 @@ body{
     color: var(--primary-text-color);
 }
 
+main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 nav{
     padding: var(--nav-padding);
     display: flex;
@@ -57,4 +63,27 @@ nav button{
     padding: var(--padding-m) var(--padding-l);
     cursor: pointer;
     border-radius: var(--border-radius-m);
+}
+
+
+
+section{
+    padding: var(--section-padding);
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: var(--padding-xxl);
+}
+
+section .task-column{
+    background-color: var(--bg-button-color);
+    flex-grow: 1;
+    padding: var(--padding-m);
+}
+
+section .task-column .heading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
