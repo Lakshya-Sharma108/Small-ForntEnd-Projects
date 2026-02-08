@@ -1,3 +1,6 @@
+const tasksData = {};
+
+
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
@@ -47,7 +50,8 @@ function addDragEventOnColumn(column) {
         columns.forEach(col => {
             const tasks = col.querySelectorAll(".task");
             const count = col.querySelector(".right");
-            console.log(tasks.length);
+
+            const todoTasks = todo.querySelectorAll(".task");
 
             count.innerText = tasks.length;
         });
