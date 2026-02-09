@@ -7,8 +7,34 @@ const done = document.querySelector("#done");
 const columns = [todo, progress, done];
 let dragElement = null;
 
-// console.log(todo, progress, done);
+if (localStorage.getItem("tasks")) {
+    const data = JSON.parse(localStorage.getItem("tasks"));
+    console.log(data);
 
+    for (const col in data) {
+        const column = document.querySelector(`#${col}`);
+        data[col].forEach(task => {
+            const div = document.createElement("div");
+            div.classList.add("task");
+            div.setAttribute("draggable", "true");
+
+            div.innerHTML = `
+                <h2>${task.title}</h2>
+                <p>${task.desc}</p>
+                <button class="delete-btn">Delete</button>
+                `;
+            column.appendChild(div);
+
+            div.addEventListener("drag", (e) => {
+                dragElement = div;
+            });
+        })
+
+        const tasks = column.querySelectorAll(".task");
+        const count = column.querySelector(".right");
+        count.innerText = tasks.length;
+    }
+}
 
 const tasks = document.querySelectorAll(".task");
 
@@ -40,9 +66,8 @@ function addDragEventOnColumn(column) {
     });
 
     column.addEventListener("drop", (e) => {
-        // console.log("drop", e);
         e.preventDefault();
-        // console.log("Dropped",dragElement,column);
+
         column.appendChild(dragElement);
         column.classList.remove("hover-over");
 
@@ -50,9 +75,15 @@ function addDragEventOnColumn(column) {
         columns.forEach(col => {
             const tasks = col.querySelectorAll(".task");
             const count = col.querySelector(".right");
-
-            const todoTasks = todo.querySelectorAll(".task");
-
+            // console.log(tasks.length);
+            tasksData[col.id] = Array.from(tasks).map(t => {
+                return {
+                    title: t.querySelector("h2").innerText,
+                    desc: t.querySelector("p").innerText
+                }
+            });
+            // console.log(tasksData);
+            localStorage.setItem("tasks", JSON.stringify(tasksData));
             count.innerText = tasks.length;
         });
     });
@@ -99,10 +130,19 @@ addTaskBtn.addEventListener("click", () => {
     columns.forEach(col => {
         const tasks = col.querySelectorAll(".task");
         const count = col.querySelector(".right");
-        console.log(tasks.length);
-
+        // console.log(tasks.length);
+        tasksData[col.id] = Array.from(tasks).map(t => {
+            return {
+                title: t.querySelector("h2").innerText,
+                desc: t.querySelector("p").innerText
+            }
+        });
+        // console.log(tasksData);
+        localStorage.setItem("tasks", JSON.stringify(tasksData));
         count.innerText = tasks.length;
     });
+
+
 
     div.addEventListener("drag", (e) => {
         dragElement = div;
