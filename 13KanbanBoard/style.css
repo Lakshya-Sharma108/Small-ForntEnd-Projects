@@ -24,7 +24,7 @@ html {
 
 
     /* Padding variables */
-    --nav-padding: 20px 30px;
+    --nav-padding: 15px 30px;
     --section-padding: 15px 30px;
     --padding-s: 5px;
     --padding-m: 10px;
@@ -77,7 +77,16 @@ nav button {
     cursor: pointer;
     border-radius: var(--border-radius-m);
     font-size: 1.2rem;
-    /* font-weight: bold; */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: var(--padding-s);
+}
+
+nav button svg{
+    /* margin-right: var(--padding-s); */
+    width:20%;
+    height:20%;
 }
 
 
