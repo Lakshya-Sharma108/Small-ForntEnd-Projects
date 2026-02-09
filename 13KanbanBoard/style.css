@@ -81,12 +81,18 @@ nav button {
     display: flex;
     align-items: center;
     gap: var(--padding-s);
+    transition: all 0.3s ease;
 }
 
 nav button svg{
     /* margin-right: var(--padding-s); */
     width:20%;
     height:20%;
+}
+
+nav button:hover {
+    background-color: var(--bg-task-color);
+    transform: scale(1.05);
 }
 
 
