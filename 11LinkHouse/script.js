@@ -52,6 +52,11 @@ const projectsData = [
         "description": "A simple age calculator that helps you determine your age based on your birthdate. Enter your birthdate and get your age instantly.",
         "tags": ["Calculator", "Age", "JavaScript"]
     },
+    {
+        "title": "Kanban-Board",
+        "description": "This is a simple Kanban board application where users can add, move, and delete tasks across different columns (To-Do, In Progress, Done). It provides a visual way to manage tasks and improve productivity.",
+        "tags": ["Kanban", "Task Management", "JavaScript"]
+    },
 ];
 
 
