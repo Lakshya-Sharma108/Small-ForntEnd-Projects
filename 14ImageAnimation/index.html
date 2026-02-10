@@ -10,22 +10,36 @@
     <!-- Distinctive Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@300;400;600;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+
+    <nav>
+        <div class="logo">
+            <a href="#" class="nav-logo">LAKSHAYA</a>
+        </div>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Hero Section: Centered frame animation with scroll control -->
     <section class="hero">
         <div class="hero-container">
             <!-- Canvas for frame-by-frame animation -->
             <canvas id="heroCanvas"></canvas>
-            
+
             <!-- Animated Text Overlay (optional - currently commented) -->
-            <!-- <div class="hero-text">
+            <div class="hero-text">
                 <div class="marquee right">LAKSHAYA • LAKSHAYA • LAKSHAYA •</div>
                 <div class="marquee left">JAVA FULL STACK DEVELOPER • JAVA FULL STACK DEVELOPER •</div>
-            </div> -->
+            </div>
 
             <!-- Scroll Indicator -->
             <div class="scroll-indicator" id="scrollIndicator">
