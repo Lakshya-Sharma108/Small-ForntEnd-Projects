@@ -4,32 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Lakshaya • Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
+    <!-- Distinctive Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@300;400;600;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <!-- Hero Section: Centered frame animation with scroll control -->
     <section class="hero">
-        <canvas id="heroCanvas"></canvas>
+        <div class="hero-container">
+            <!-- Canvas for frame-by-frame animation -->
+            <canvas id="heroCanvas"></canvas>
+            
+            <!-- Animated Text Overlay (optional - currently commented) -->
+            <!-- <div class="hero-text">
+                <div class="marquee right">LAKSHAYA • LAKSHAYA • LAKSHAYA •</div>
+                <div class="marquee left">JAVA FULL STACK DEVELOPER • JAVA FULL STACK DEVELOPER •</div>
+            </div> -->
 
-        <!-- Moving text -->
-        <!-- <div class="hero-text">
-            <div class="marquee right">LAKSHAYA • LAKSHAYA • LAKSHAYA •</div>
-            <div class="marquee left">JAVA FULL STACK DEVELOPER • JAVA FULL STACK DEVELOPER •</div>
-        </div> -->
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" id="scrollIndicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="hero-gradient"></div>
     </section>
 
+    <!-- Main Content: Appears after animation completes -->
     <div id="mainContent">
+        <!-- About Section -->
         <section class="about">
-            <h2>About</h2>
-            <p>Your about content here</p>
+            <div class="section-container">
+                <h2 class="section-title">About</h2>
+                <p class="section-content">
+                    I'm a Java Full Stack Developer passionate about creating seamless digital experiences.
+                    With expertise in both frontend and backend technologies, I build scalable applications
+                    that solve real-world problems.
+                </p>
+            </div>
         </section>
 
-        <section>
-            <h2>Projects</h2>
-            <p>Your projects here</p>
+        <!-- Projects Section -->
+        <section class="projects">
+            <div class="section-container">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-content">
+                    From enterprise applications to creative web experiences, explore my work that combines
+                    technical excellence with innovative design.
+                </p>
+                <!-- Add your projects here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <div class="section-container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-content">
+                    Ready to collaborate? Reach out and let's build something amazing together.
+                </p>
+            </div>
         </section>
     </div>
 

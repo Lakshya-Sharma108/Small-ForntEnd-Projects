@@ -1,84 +1,232 @@
+/* =====================================================
+   GLOBAL RESET & BASE STYLES
+   ===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    /* Color Palette - Dark & Dramatic */
+    --color-bg-dark: #0a0a0a;
+    --color-bg-section: #0f0f0f;
+    --color-accent: #ff6b35;
+    --color-accent-dim: #ff6b3520;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    --color-border: #1a1a1a;
+
+    /* Typography */
+    --font-display: 'Bebas Neue', Arial, sans-serif;
+    --font-body: 'Archivo', Arial, Helvetica, sans-serif;
+
+    /* Spacing */
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+
+    /* Animation */
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 html, body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
-    background: black;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
+    background: var(--color-bg-dark);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    overflow-y: hidden; /* Initially hidden - controlled by JS */
 }
 
-/* HERO */
+
+/* =====================================================
+   HERO SECTION - Centered Frame Animation
+   ===================================================== */
+
 .hero {
     position: relative;
-    width: 50%;
+    width: 100%;
     height: 100vh;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-bg-dark);
 }
 
-/* CANVAS IMAGE SHARP */
+/* Container for canvas - 65% width, 80% height */
+.hero-container {
+    position: relative;
+    width: 65%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    
+    /* Subtle border glow */
+    box-shadow: 
+        0 0 0 1px var(--color-border),
+        0 0 60px rgba(255, 107, 53, 0.15),
+        0 20px 80px rgba(0, 0, 0, 0.8);
+    
+    /* Smooth scaling on load */
+    animation: heroReveal 1.2s var(--transition-smooth) forwards;
+}
+
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Canvas - Optimized for Sharp, HD rendering */
 canvas {
-    /* position: absolute; */
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-    /* sharp and hd image */
-    /* image-rendering: pixelated;
-    filter: contrast(1.1) saturate(1.1) brightness(1.1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-    image-rendering: optimizeQuality; */
-
-    image-rendering: optimizeQuality;
-    filter: contrast(1.05) saturate(1.1) brightness(1.2);
+    
+    /* Image sharpness optimization */
+    image-rendering: -webkit-optimize-contrast; /* Webkit */
+    image-rendering: crisp-edges; /* Firefox */
+    image-rendering: optimizeQuality; /* Others */
+    
+    /* Enhanced visual quality filters */
+    filter: 
+        contrast(1.08)          /* Slightly boost contrast */
+        saturate(1.15)          /* Richer colors */
+        brightness(1.05)        /* Subtle brightness lift */
+        sharpness(1.2);         /* Sharpen edges (where supported) */
+    
+    /* GPU acceleration for smoother rendering */
+    transform: translateZ(0);
+    will-change: contents;
+    backface-visibility: hidden;
 }
 
-/* MOVING TEXT */
+/* Background gradient for depth */
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        var(--color-bg-dark) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.4s var(--transition-smooth);
+    z-index: 10;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-arrow {
+    width: 20px;
+    height: 20px;
+    margin: 8px auto 0;
+    border-right: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    transform: rotate(45deg);
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: rotate(45deg) translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: rotate(45deg) translateY(8px);
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   MOVING TEXT OVERLAY (Optional)
+   ===================================================== */
+
 .hero-text {
     position: absolute;
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2;
+    z-index: 5;
     overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
+    pointer-events: none;
+    font-family: var(--font-display);
 }
 
 .marquee {
     white-space: nowrap;
-    font-size: 4rem;
     font-weight: bold;
-    opacity: 0.9;
+    text-transform: uppercase;
 }
 
-/* move right */
-.right {
-    animation: rightMove 12s linear infinite;
+/* Right-moving marquee */
+.marquee.right {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    opacity: 0.85;
+    color: var(--color-text-primary);
+    text-shadow: 0 0 40px rgba(255, 107, 53, 0.4);
+    animation: rightMove 15s linear infinite;
 }
 
-/* move left */
-.left {
+/* Left-moving marquee */
+.marquee.left {
+    font-size: clamp(1rem, 3vw, 2rem);
+    opacity: 0.5;
+    color: var(--color-accent);
+    letter-spacing: 0.2em;
     animation: leftMove 12s linear infinite;
-    font-size: 1.5rem;
-    opacity: 0.6;
+    margin-top: var(--space-sm);
 }
 
 @keyframes rightMove {
     from {
         transform: translateX(-100%);
     }
-
     to {
         transform: translateX(100%);
     }
@@ -88,25 +236,150 @@ canvas {
     from {
         transform: translateX(100%);
     }
-
     to {
         transform: translateX(-100%);
     }
 }
 
-/* MAIN CONTENT */
+
+/* =====================================================
+   MAIN CONTENT SECTIONS
+   ===================================================== */
+
 #mainContent {
     opacity: 0;
-    transition: 1s;
+    transition: opacity 1.2s var(--transition-smooth);
+    background: var(--color-bg-dark);
 }
 
+#mainContent.visible {
+    opacity: 1;
+}
+
+/* Section Base Styles */
 section {
     min-height: 100vh;
-    padding: 120px 10%;
-    background: #0b0b0b;
-    border-top: 1px solid #222;
+    padding: var(--space-xl) 10%;
+    position: relative;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-section);
 }
 
-h2 {
-    font-size: 3rem;
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Titles */
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-md);
+    color: var(--color-text-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--color-accent);
+    border-radius: 2px;
+}
+
+/* Section Content */
+.section-content {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    max-width: 800px;
+}
+
+/* Individual Section Styling */
+.about {
+    background: linear-gradient(135deg, #0f0f0f 0%, #0a0a0a 100%);
+}
+
+.projects {
+    background: var(--color-bg-dark);
+}
+
+.contact {
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 1200px) {
+    .hero-container {
+        width: 75%;
+        height: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        width: 90%;
+        height: 70%;
+        border-radius: 8px;
+    }
+
+    section {
+        padding: var(--space-lg) 6%;
+    }
+
+    .scroll-indicator {
+        bottom: -50px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        width: 95%;
+        height: 65%;
+    }
+
+    .marquee.right {
+        font-size: 2rem;
+    }
+
+    .marquee.left {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =====================================================
+   PERFORMANCE OPTIMIZATIONS
+   ===================================================== */
+
+/* GPU acceleration for smooth animations */
+.hero-container,
+canvas,
+.scroll-indicator {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
