@@ -18,6 +18,11 @@
     --color-text-secondary: #a0a0a0;
     --color-border: #1a1a1a;
 
+    /* Border Radius */
+    --border-radius-sm: 5px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+
     /* Typography */
     --font-display: 'Bebas Neue', Arial, sans-serif;
     --font-body: 'Archivo', Arial, Helvetica, sans-serif;
@@ -58,22 +63,31 @@ body {
 
 
 nav {
-    position: fixed;
-    top: 0;
+    position:fixed;
+    top: 0px;
     left: 0;
     width: 100%;
     padding: var(--space-sm) var(--space-lg);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     z-index: 20;
 
     /* Subtle background for readability */
-    background: rgba(10, 10, 10, 0.8);
+    background: var(--color-text-secondary);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
+    /* border-bottom: 1px solid var(--color-border); */
 }
 
 
+
+nav .logo a{
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    /* text-shadow: 0 0 10px rgba(255, 107, 53, 0.3); */
+}
 
 
 /* =====================================================
@@ -99,7 +113,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: var(--border-radius-md);
     overflow: hidden;
 
     /* Subtle border glow */
