@@ -3,9 +3,9 @@
 /* ================= CONFIG ================= */
 const CONFIG = {
   frameCount: 145,          // total frames
-  framePath: "Images",      // folder name
+  framePath: "Images2",      // folder name
   filePrefix: "frame_",     // frame_0001.webp
-  fileExt: ".webp",
+  fileExt: ".png",
   scrollSensitivity: 0.25,  // lower = slower scroll
   smoothing: 0.09           // animation smoothness
 };

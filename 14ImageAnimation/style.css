@@ -20,28 +20,29 @@ body {
 }
 
 
-body{
-  background-color:#050505;
+body {
+    background-color: #050505;
 
-  background-image:
-    radial-gradient(rgba(234, 234, 234, 0.163) 1px, transparent 1px);
+    background-image:
+        radial-gradient(rgba(234, 234, 234, 0.163) 1px, transparent 1px);
 
-  background-size:20px 20px;
+    background-size: 20px 20px;
 
-  position:relative;
+    position: relative;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at 50% 20%, rgba(255,255,255,0.06), transparent 60%);
-  pointer-events:none;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.06), transparent 60%);
+    pointer-events: none;
 }
 
 
 :root {
     /* Color Variables */
+    --color-text-primary: #acacac;
     --primary-color: #f0f0f0;
     --secondary-color: #111;
     --accent-color: #ff5722;
@@ -49,8 +50,11 @@ body::before{
 
     /* Background Color Variables */
     --background-color-primary: #111;
-    --background-color-secondary: #222;
+    --background-color-secondary: #272727;
     --background-color-light: #fff;
+
+    /* Black glass background */
+    --background-color-black-glass: rgba(45, 45, 45, 0.484);
 
     /* Padding Variables */
     --padding-small: 5px;
@@ -82,24 +86,28 @@ body::before{
 /* navbar */
 .navbar {
     width: 90%;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    padding: var(--padding-large) var(--padding-medium);
+    /* padding: var(--padding-large) var(--padding-xlarge); */
     background-color: var(--background-color-secondary);
-    margin: var(--margin-large) var(--margin-xlarge);
+    margin-top: var(--margin-xlarge);
     border-radius: var(--border-radius-xlarge);
 }
 
 .navbar .logo {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    height: 100%;
+    text-align: center;
     font-weight: bold;
     color: var(--primary-color);
     background-color: var(--accent-color);
-    padding: 0 var(--padding-medium);
-    margin: var(--padding-small) var(--padding-medium);
-    border-radius: var(--border-radius-medium);
+    padding: var(--padding-large) var(--padding-xlarge);
+    /* margin: var(--padding-xlarge) var(--padding-medium); */
+    border-top-left-radius: var(--border-radius-xlarge);
+    border-bottom-left-radius: var(--border-radius-xlarge);
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
 }
@@ -162,11 +170,12 @@ body::before{
     border-bottom-left-radius: var(--border-radius-xlarge);
     border-top-left-radius: var(--border-radius-xlarge);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
 
-    background-color: rgb(1, 68, 16);
+    background-color: var(--background-color-secondary);
 }
 
 .animation-container {
@@ -175,10 +184,11 @@ body::before{
     overflow: hidden;
     border-bottom-right-radius: var(--border-radius-xlarge);
     border-top-right-radius: var(--border-radius-xlarge);
+    /* border-radius: var(--border-radius-xlarge); */
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: contrast(1) brightness(1.2) grayscale(0.9);
+    filter: contrast(1) brightness(1.2) grayscale(0);
 
     background-color: var(--background-color-secondary);
 }
@@ -187,4 +197,50 @@ body::before{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.info-box h1 {
+    font-size: 4em;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--margin-medium);
+}
+
+.info-box p {
+    font-size: 1.2em;
+    color: var(--color-text-primary);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: var(--margin-medium);
+}
+
+.info-box .contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-large);
+    margin-top: var(--margin-medium);
+
+}
+
+.info-box .down-icon {
+    font-size: 2em;
+    color: var(--primary-color);
+    animation: bounce 2s infinite;
+    position: absolute;
+    bottom: 100px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
 }
