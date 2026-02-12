@@ -109,7 +109,7 @@ body::before {
 /* navbar */
 .navbar {
     width: 90%;
-    height: 70px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,25 +120,37 @@ body::before {
     border-radius: var(--border-radius-xlarge);
 }
 
-.navbar .logo {
-    font-size: 1.8em;
-    height: 100%;
-    text-align: center;
-    font-weight: bold;
-    color: var(--primary-color);
-    background-color: var(--accent-color);
-    padding: var(--padding-large) var(--padding-xlarge);
-    /* margin: var(--padding-xlarge) var(--padding-medium); */
-    border-top-left-radius: var(--border-radius-xlarge);
-    border-bottom-left-radius: var(--border-radius-xlarge);
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
+.navbar:hover {
+    box-shadow: 6px 6px 0px 0px var(--accent-color);
+    transition: box-shadow 0.3s;
 }
 
-.navbar .logo:hover {
+.navbar .logo {
+    font-size: 1.8em;
+    width: 100px;
+    height: 85%;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--background-color-primary);
+    padding: var(--padding-small) var(--padding-large);
+    margin: 0 var(--margin-medium);
+    /* margin: var(--padding-xlarge) var(--padding-medium); */
+    /* border-top-left-radius: var(--border-radius-xlarge);
+    border-bottom-left-radius: var(--border-radius-xlarge); */
+    /* border-radius: var(--border-radius-medium); */
+    border-radius: var(--border-radius-xlarge);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .navbar .logo:hover {
     background-color: var(--primary-color);
     color: var(--accent-color);
-}
+} */
 
 .navbar ul {
     list-style: none;
