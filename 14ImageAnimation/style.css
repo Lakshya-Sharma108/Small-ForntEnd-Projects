@@ -414,14 +414,10 @@ hr:hover {
     overflow: hidden;
     padding-top: var(--padding-2xlarge);
     padding-left: var(--padding-2xlarge);
-    margin: var(--margin-3xlarge) auto; 
+    margin: var(--margin-3xlarge) auto;
     gap: var(--gap-medium);
     border-radius: var(--border-radius-xlarge);
     transition: background-color 0.3s, transform 0.3s;
-
-    /* padding: var(--padding-xlarge) var(--padding-3xlarge); */
-    /* border-radius: var(--border-radius-xlarge); */
-    /* transition: background-color 0.3s, transform 0.3s; */
 }
 
 .Skills-section .container:hover {
@@ -443,7 +439,7 @@ hr:hover {
     letter-spacing: 6px;
 }
 
-.Skills-section .skills{
+.Skills-section .skills {
     width: 100%;
     height: 90%;
     display: flex;
@@ -465,16 +461,12 @@ hr:hover {
     object-fit: cover;
     background-color: #d9d9d9;
     box-shadow: 6px 8px 0px 0px var(--accent-color);
-    
-    /* margin: var(--margin-small); */
-    /* border: 2px solid orange; */
 }
 
 .skill img {
     width: 45%;
     height: 60%;
     transition: box-shadow 0.3s;
-    
 
     /* object-fit: cover; */
 }
