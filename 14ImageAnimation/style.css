@@ -42,7 +42,7 @@ body::before {
 
 :root {
     /* Color Variables */
-    --color-text-primary: #acacac;
+    --color-text-primary: #cecece;
     --color-text-secondary: #ff3c00;
     --primary-color: #f0f0f0;
     --secondary-color: #111;
@@ -566,7 +566,7 @@ hr:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: var(--gap-xlarge);
+    gap: var(--gap-large);
     /* border: 2px solid purple; */
 }
 
@@ -580,6 +580,7 @@ hr:hover {
     font-size: 1.2rem;
     color: var(--color-text-primary);
     line-height: 1.5;
+    letter-spacing: 2px;
     /* margin-bottom: var(--margin-medium); */
 }
 
