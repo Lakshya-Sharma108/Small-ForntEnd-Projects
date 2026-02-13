@@ -453,13 +453,14 @@ hr:hover {
 
 .skill {
     width: 15%;
-    height: 40%;
+    height: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     object-fit: cover;
     background-color: #d9d9d9;
+    margin-bottom: var(--margin-xlarge);
     box-shadow: 6px 8px 0px 0px var(--accent-color);
 }
 
@@ -467,11 +468,13 @@ hr:hover {
     width: 45%;
     height: 60%;
     transition: box-shadow 0.3s;
+    cursor: pointer;
 
     /* object-fit: cover; */
 }
 
 .skill img:hover {
-    box-shadow: 9px 10px 0px 0px var(--accent-color);
-    transition: box-shadow 0.3s;
+    /* box-shadow: 9px 10px 0px 0px var(--accent-color); */
+    transform: scale(1.1);
+    transition: transform 0.3s;
 }
