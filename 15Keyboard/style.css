@@ -18,14 +18,18 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid red;
-    gap: 10px;
+    background-color: rgb(253, 246, 236);
+    
+    /* border: 2px solid red; */
+    /* gap: 10px; */
 }
 
 .container .lightbox{
     width: 80%;
     height: 6%;
-    border: 2px solid blue;
+    background-color: turquoise;
+
+    /* border: 2px solid blue; */
 }
 
 .container .keyContainer{
@@ -35,8 +39,8 @@ body{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 8px;
-    padding: 5px;
+    gap: 12px;
+    padding: 25px;
     border: 2px solid green;
 }
 
@@ -46,9 +50,68 @@ body{
     justify-content: center;
 
     border-radius: 15px;
-    font-size: 1.5rem;
-    border: 4px solid orange;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border: 2px solid orange;
 }
+
+#keyBksp img{
+    width: 50%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#keyEnter img{
+    width: 25%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#keyShift img{
+    width: 25%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#upArrow img{
+    width: 40%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#keyWin img{
+    width: 35%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#keyMenu img{
+    width: 35%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#leftArrow img{
+    width: 30%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#downArrow img{
+    width: 40%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#rightArrow img{
+    width: 30%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+
+
 
 .container .keyContainer .key:active{
     background-color: orange;
