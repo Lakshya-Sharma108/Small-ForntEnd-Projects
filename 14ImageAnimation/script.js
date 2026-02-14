@@ -114,7 +114,7 @@ class FrameAnimator {
     // Apply zoom effect on scroll
     applyZoomEffect() {
         const maxZoom = 1.6;        // how much zoom at last frame
-        const maxTranslate = 70;  // move upward (px)
+        const maxTranslate = 50;  // move upward (px)
 
         const progress = this.currentFrame / (CONFIG.frameCount - 1);
 

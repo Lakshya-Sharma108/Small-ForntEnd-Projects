@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Lakshaya Awasthi - Java Full Stack Developer portfolio. Explore my skills, projects, and experience.">
+    <meta property="og:title" content="Lakshaya Awasthi | Java Full Stack Developer">
+    <meta property="og:description" content="Java Full Stack Developer passionate about building scalable web applications and modern user experiences.">
+    <meta property="og:image" content="./Icons/kalighatPotrait.png">
+    <title>Lakshaya Awasthi | Java Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,6 +18,11 @@
         <!-- Navbar Section (Top center in Phase 1, Left Vertical in Phase 2) -->
         <nav class="navbar">
             <div class="logo"><span class="logo-text">LA</span></div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -37,13 +46,13 @@
                 <div class="contact-icons">
                     <a href="https://www.linkedin.com/in/lakshaya-awasthi-713b5b281/" target="_blank"
                         class="contact-icon">
-                        <img src="./Icons/linkedin.svg" alt="LinkedIn Icon">
+                        <img src="./Icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
                     </a>
                     <a href="https://github.com/Lakshya-Sharma108" target="_blank" class="contact-icon">
-                        <img src="./Icons/github.svg" alt="GitHub Icon">
+                        <img src="./Icons/github.svg" alt="GitHub" width="32" height="32">
                     </a>
                     <a href="https://www.instagram.com/lakshaya0808/" target="_blank" class="contact-icon">
-                        <img src="./Icons/insta.svg" alt="Instagram Icon">
+                        <img src="./Icons/insta.svg" alt="Instagram" width="32" height="32">
                     </a>
                 </div>
 
@@ -88,7 +97,7 @@
             </div>
 
             <div class="about-right">
-                <img src="./Icons/kalighatPotrait.png" alt="profile">
+                <img src="./Icons/kalighatPotrait.png" alt="Lakshaya Awasthi - Kalighat Portrait">
                 <span>Lakshaya | Kalighat Potrait</span>
             </div>
         </div>
@@ -112,34 +121,34 @@
 
             <div class="skills">
                 <div class="skill">
-                    <img src="./Icons/Git.png" alt="">
+                    <img src="./Icons/Git.png" alt="Git">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/Github.png" alt="">
+                    <img src="./Icons/Github.png" alt="GitHub">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/Html.png" alt="">
+                    <img src="./Icons/Html.png" alt="HTML">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/Css.png" alt="">
+                    <img src="./Icons/Css.png" alt="CSS">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/Javascript.png" alt="">
+                    <img src="./Icons/Javascript.png" alt="JavaScript">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/React.png" alt="">
+                    <img src="./Icons/React.png" alt="React">
                 </div>
                 <div class="skill">
                     <img src="./Icons/Java.png" alt="Java">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/Springboot.png" alt="">
+                    <img src="./Icons/Springboot.png" alt="Spring Boot">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/Sql.png" alt="">
+                    <img src="./Icons/Sql.png" alt="SQL">
                 </div>
                 <div class="skill">
-                    <img src="./Icons/ComingSoon.png" alt="">
+                    <img src="./Icons/ComingSoon.png" alt="Coming Soon">
                 </div>
             </div>
         </div>
@@ -209,21 +218,21 @@
 
             <div class="qualificationContent">
                 <div id="SrSec" class="box">
-                    <img src="./Icons/SrSec.svg" alt="">
+                    <img src="./Icons/SrSec.svg" alt="Senior Secondary">
                     <div class="boxContent">
                         <h3>Senior Secondary | PCM</h3>
                         <p>2020-21 | Govt. Sr. Sec. School Chitaukari, Bharatpur</p>
                     </div>
                 </div>
                 <div id="Graduation" class="box">
-                    <img src="./Icons/Graduation.svg" alt="">
+                    <img src="./Icons/Graduation.svg" alt="Graduation">
                     <div class="boxContent">
                         <h3>Graduation | BCA</h3>
                         <p>2021 - 2023 | S. N. College of Science, Dholpur</p>
                     </div>
                 </div>
                 <div id="PostGraduation" class="box">
-                    <img src="./Icons/PostGraduation.svg" alt="">
+                    <img src="./Icons/PostGraduation.svg" alt="Post Graduation">
                     <div class="boxContent">
                         <h3>Post Graduation | MCA</h3>
                         <p>2025 - Present | Manipal University, Jaipur</p>
@@ -261,6 +270,7 @@
                     <a href="mailto:lakshayaawasthi108@gmail.com">lakshayaawasthi108@gmail.com</a>
                 </div>
             </div>
+        </div>
     </section>
 
 
@@ -269,11 +279,29 @@
 
     <!-- Copyright Section -->
     <section class="copyright-section">
-        <p>&copy; 2026 Lakshaya Awasthi. All rights reserved.</p>
+        <p>&copy; <span id="copyright-year"></span> Lakshaya Awasthi. All rights reserved.</p>
     </section>
 
 
 
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.navbar ul');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navMenu.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', isOpen);
+            });
+            // Close menu when a link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', false);
+                });
+            });
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 
