@@ -8,14 +8,14 @@ if (window.innerWidth < 600) {
 
 
 document.addEventListener('keydown', function (event) {
-    allKeys.forEach(function (key) { 
+    allKeys.forEach(function (key) {
         if (event.key === "CapsLock" && key.id.toLowerCase() == "keycapslock") {
             document.querySelector('.capslockLight').classList.toggle('capslockLightOn');
             event.preventDefault(); // Prevent the default behavior of CapsLock key
-            
+
         }
-        
-        if (key.id.toLowerCase() == "key"+event.key.toLowerCase() || (event.key == " " && key.id == "keySpace")) {
+
+        if (key.id.toLowerCase() == "key" + event.key.toLowerCase() || (event.key == " " && key.id == "keySpace")) {
             key.classList.add('active');
         }
     });
@@ -23,7 +23,7 @@ document.addEventListener('keydown', function (event) {
 
 document.addEventListener('keyup', function (event) {
     allKeys.forEach(function (key) {
-        if (key.id.toLowerCase() == "key"+event.key.toLowerCase() || (event.key == " " && key.id == "keySpace")) {
+        if (key.id.toLowerCase() == "key" + event.key.toLowerCase() || (event.key == " " && key.id == "keySpace")) {
             key.classList.remove('active');
         }
     });
