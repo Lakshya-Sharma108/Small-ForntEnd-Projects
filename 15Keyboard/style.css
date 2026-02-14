@@ -79,7 +79,7 @@ body{
     border: 2px solid black;
 }
 
-#keyBksp img{
+#keyBackspace img{
     width: 50%;
     height: 100%;
     object-fit: contain;
@@ -97,37 +97,37 @@ body{
     object-fit: contain;
 }
 
-#upArrow img{
+#KeyArrowUp img{
     width: 40%;
     height: 100%;
     object-fit: contain;
 }
 
-#keyWin img{
+#keyMeta img{
     width: 35%;
     height: 100%;
     object-fit: contain;
 }
 
-#keyMenu img{
+#keyContextMenu img{
     width: 35%;
     height: 100%;
     object-fit: contain;
 }
 
-#leftArrow img{
+#keyArrowLeft img{
     width: 30%;
     height: 100%;
     object-fit: contain;
 }
 
-#downArrow img{
+#keyArrowDown img{
     width: 40%;
     height: 100%;
     object-fit: contain;
 }
 
-#rightArrow img{
+#keyArrowRight img{
     width: 30%;
     height: 100%;
     object-fit: contain;
@@ -139,6 +139,11 @@ body{
 
 .container .keyContainer .key:active{
     background-color: rgb(255, 203, 108);
+    color: white;
+}
+
+.active{
+    background-color: rgb(145, 203, 118);
     color: white;
 }
 
