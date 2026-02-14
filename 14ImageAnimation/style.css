@@ -612,3 +612,91 @@ hr:hover {
     background-color: var(--primary-color);
     color: var(--accent-color);
 }
+
+
+
+
+
+
+/* Qualification Section */
+.qualification-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qualification-section .qualificationContainer{
+    width: 85%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--border-radius-xlarge);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.qualification-section .qualificationContainer:hover {
+    transform: scale(1.01);
+    background-color: var(--background-color-black-glass);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.qualification-section .qualificationContainer .heading {
+    width: 100%;
+    height: 8%;
+    font-size: 1.8rem;
+    letter-spacing: 6px;
+    margin-left: var(--margin-xlarge);
+    margin-bottom: var(--margin-large);
+    color: var(--color-text-secondary);
+    padding-left: var(--padding-xlarge);
+}
+
+.qualification-section .qualificationContainer .qualificationContent {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-2xlarge);
+}
+
+.qualification-section .qualificationContainer .qualificationContent .box{
+    width: 90%;
+    height: 25%;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    gap: var(--gap-large);
+    margin-bottom: var(--margin-medium);
+    background-color: var(--background-color-first);
+}
+
+.qualification-section .qualificationContainer .qualificationContent .box img {
+    width: 10%;
+    height: 80%;
+    /* object-fit: cover; */
+    margin-left: var(--margin-large);
+}   
+
+.qualification-section .qualificationContainer .qualificationContent .box .boxContent{
+    width: auto;
+    height: 80%;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gap-small);
+}
+
+.qualification-section .qualificationContainer .qualificationContent .box .boxContent p{
+    color: var(--hr-color-primary);
+    line-height: 1.5;
+    letter-spacing: 2px;
+}
