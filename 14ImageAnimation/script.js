@@ -108,21 +108,21 @@ class FrameAnimator {
     bindEvents() {
         window.addEventListener("wheel", (e) => this.handleScroll(e), { passive: false });
     }
-    
-    
-    
+
+
+
     // Apply zoom effect on scroll
-    applyZoomEffect(){
+    applyZoomEffect() {
         const maxZoom = 1.6;        // how much zoom at last frame
         const maxTranslate = 70;  // move upward (px)
-        
+
         const progress = this.currentFrame / (CONFIG.frameCount - 1);
-        
+
         const scale = 1 + (maxZoom - 1) * progress;
         const translateY = maxTranslate * progress;
-        
+
         this.canvas.style.transform =
-        `scale(${scale}) translateY(${translateY}px)`;
+            `scale(${scale}) translateY(${translateY}px)`;
     }
 }
 

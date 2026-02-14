@@ -745,7 +745,7 @@ hr:hover {
     gap: var(--gap-large);
     /* background-color: var(--background-color-first); */
     border: 2px solid black;
-    background-color: rgb(255, 255, 205) ;
+    background-color: rgb(255, 255, 205);
     box-shadow: 11px 13px 0px 0px rgb(125, 157, 185);
 }
 
