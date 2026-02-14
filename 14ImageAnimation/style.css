@@ -627,7 +627,7 @@ hr:hover {
     justify-content: center;
 }
 
-.qualification-section .qualificationContainer{
+.qualification-section .qualificationContainer {
     width: 85%;
     height: 75%;
     display: flex;
@@ -666,7 +666,7 @@ hr:hover {
     gap: var(--gap-2xlarge);
 }
 
-.qualification-section .qualificationContainer .qualificationContent .box{
+.qualification-section .qualificationContainer .qualificationContent .box {
     width: 90%;
     height: 25%;
     color: var(--secondary-color);
@@ -675,7 +675,26 @@ hr:hover {
     /* justify-content: space-evenly; */
     gap: var(--gap-large);
     margin-bottom: var(--margin-medium);
-    background-color: var(--background-color-first);
+    /* background-color: var(--background-color-first); */
+    /* box-shadow: 9px 10px 0px 0px var(--accent-color); */
+}
+
+#SrSec{
+    background-color:rgb(255, 220, 255);
+    box-shadow: 9px 10px 0px 0px rgb(255, 255, 214);
+    border: 1px solid black;
+}
+
+#Graduation{
+    background-color: rgb(207, 220, 255);
+    box-shadow: 9px 10px 0px 0px rgb(177, 250, 182);
+    border: 1px solid black;
+}
+
+#PostGraduation{
+    background-color: rgb(255, 201, 201);
+    box-shadow: 9px 10px 0px 0px rgb(194, 218, 255);
+    border: 1px solid black;
 }
 
 .qualification-section .qualificationContainer .qualificationContent .box img {
@@ -683,9 +702,9 @@ hr:hover {
     height: 80%;
     /* object-fit: cover; */
     margin-left: var(--margin-large);
-}   
+}
 
-.qualification-section .qualificationContainer .qualificationContent .box .boxContent{
+.qualification-section .qualificationContainer .qualificationContent .box .boxContent {
     width: auto;
     height: 80%;
     font-size: 1.2rem;
@@ -695,7 +714,7 @@ hr:hover {
     gap: var(--gap-small);
 }
 
-.qualification-section .qualificationContainer .qualificationContent .box .boxContent p{
+.qualification-section .qualificationContainer .qualificationContent .box .boxContent p {
     color: var(--hr-color-primary);
     line-height: 1.5;
     letter-spacing: 2px;
