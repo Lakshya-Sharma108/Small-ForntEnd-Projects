@@ -832,3 +832,30 @@ hr:hover {
     color: var(--background-color-secondary);
     transition: background-color 0.3s, color 0.3s;
 }
+
+
+
+
+
+
+/* Unique Copyright Section */
+.copyright-section {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    /* border: 2px solid yellow; */
+}
+
+.copyright-section p{
+    width: 100%;
+    height: 45px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: sans-serif;
+    padding-top: 10px;
+    background-color: var(--background-color-secondary);
+    color: var(--hr-color-secondary);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
