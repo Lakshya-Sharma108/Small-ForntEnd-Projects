@@ -49,7 +49,7 @@ body::before {
     --color-text-secondary: #ff3c00;
     --primary-color: #f0f0f0;
     --secondary-color: #111;
-    --accent-color: #ff5722;
+    --accent-color: #ff6131;
 
 
     /* Background Color Variables */
@@ -120,6 +120,7 @@ body::before {
     gap: 10px;
     background-color: var(--background-color-first);
     margin-top: var(--margin-xlarge);
+    border: 1px solid black;
     box-shadow: 7px 8px 0px 0px var(--accent-color);
 
     /* border-radius: var(--border-radius-xlarge); */
@@ -171,7 +172,7 @@ transition: box-shadow 0.3s;
     text-decoration: none;
     color: var(--secondary-color);
     font-size: 1.6em;
-    font-weight: 600;
+    /* font-weight: 600; */
     transition: color 0.3s, color 0.3s;
 
     /* padding: var(--padding-small) var(--padding-medium); */
@@ -277,6 +278,7 @@ transition: box-shadow 0.3s;
     position: relative;
     filter: contrast(1.1) brightness(1.2) grayscale(0);
     background-color: var(--background-color-secondary);
+    border: 2px solid black;
     box-shadow: 11px 8px 0px 0px var(--accent-color);
     cursor: pointer;
 
@@ -387,6 +389,7 @@ hr:hover {
 .about-right img {
     width: 340px;
     filter: contrast(1.1) brightness(1.2);
+    border: 2px solid black;
     box-shadow: 9px 10px 0px 0px var(--accent-color);
 }
 
@@ -465,6 +468,7 @@ hr:hover {
     object-fit: cover;
     background-color: #d9d9d9;
     margin-bottom: var(--margin-xlarge);
+    border: 2px solid black;
     box-shadow: 6px 8px 0px 0px var(--accent-color);
 }
 
@@ -555,6 +559,7 @@ hr:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid black;
     box-shadow: 9px 10px 0px 0px var(--accent-color);
     background-color: var(--background-color-first);
 
@@ -755,12 +760,14 @@ hr:hover {
     font-size: 1.8rem;
     letter-spacing: 6px;
     text-align: center;
-    color: var(--background-color-primary);
-    background-color: var(--accent-color);
-    border-radius: var(--border-radius-xlarge);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: var(--border-radius-xlarge);
+    color: var(--background-color-primary);
+    background-color: var(--accent-color);
+    border: 1px solid black;
+    box-shadow: 9px 10px 0px 0px rgb(255, 237, 149);
 }
 
 .contact-section .contactContainer .contact-info {
