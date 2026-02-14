@@ -679,19 +679,19 @@ hr:hover {
     /* box-shadow: 9px 10px 0px 0px var(--accent-color); */
 }
 
-#SrSec{
-    background-color:rgb(255, 220, 255);
+#SrSec {
+    background-color: rgb(255, 220, 255);
     box-shadow: 9px 10px 0px 0px rgb(255, 255, 214);
     border: 1px solid black;
 }
 
-#Graduation{
+#Graduation {
     background-color: rgb(207, 220, 255);
     box-shadow: 9px 10px 0px 0px rgb(177, 250, 182);
     border: 1px solid black;
 }
 
-#PostGraduation{
+#PostGraduation {
     background-color: rgb(255, 201, 201);
     box-shadow: 9px 10px 0px 0px rgb(194, 218, 255);
     border: 1px solid black;
@@ -718,4 +718,117 @@ hr:hover {
     color: var(--hr-color-primary);
     line-height: 1.5;
     letter-spacing: 2px;
+}
+
+
+
+
+
+
+
+/* Contact Section */
+.contact-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-section .contactContainer {
+    width: 80%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-large);
+    /* background-color: var(--background-color-first); */
+    border: 2px solid black;
+    background-color: rgb(255, 255, 205) ;
+    box-shadow: 11px 13px 0px 0px rgb(125, 157, 185);
+}
+
+.contact-section .contactContainer .heading {
+    width: 30%;
+    height: 18%;
+    font-size: 1.8rem;
+    letter-spacing: 6px;
+    text-align: center;
+    color: var(--background-color-primary);
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius-xlarge);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-section .contactContainer .contact-info {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--gap-large);
+}
+
+.contact-section .contactContainer .contact-info .mail {
+    width: 60%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-large);
+    transition: transform 0.3s;
+}
+
+.contact-section .contactContainer .contact-info .mail:hover {
+    transform: scale(1.04);
+    transition: transform 0.3s;
+}
+
+
+.contact-section .contactContainer .contact-info .mail a {
+    width: auto;
+    height: 40px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--background-color-secondary);
+}
+
+.contact-section .contactContainer .contact-info .phone {
+    width: 60%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-large);
+    transition: transform 0.3s;
+}
+
+.contact-section .contactContainer .contact-info .phone:hover {
+    transform: scale(1.04);
+    transition: transform 0.3s;
+}
+
+.contact-section .contactContainer .contact-info .phone img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-section .contactContainer .contact-info .phone a {
+    width: auto;
+    height: 40px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--background-color-secondary);
+    transition: background-color 0.3s, color 0.3s;
 }
