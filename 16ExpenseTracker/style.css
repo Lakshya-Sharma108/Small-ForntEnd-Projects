@@ -51,3 +51,164 @@ html{
     cursor: pointer;
     font-size: 1.1rem;
 }
+
+
+
+.MainSection .MainContainer{
+    width: 70%;
+    height: 70%;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.MainContainer .left{
+    width: 50%;
+    height: 100%;
+    background-color: rgb(255, 166, 166);
+    border-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.left h3{
+    color: rgb(0, 39, 166);
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+.left .summary{
+    width: 96%;
+    height: 25%;
+    background-color: rgb(255, 255, 255);
+    margin: 10px auto;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.summary .totalBalance{
+    width: 30%;
+    height: 80%;
+    background-color: rgb(166, 255, 166);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary .totalIncome{
+    width: 30%;
+    height: 80%;
+    background-color: rgb(166, 255, 166);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary .totalExpense{
+    width: 30%;
+    height: 80%;
+    background-color: rgb(166, 255, 166);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary .summaryItem{
+    color: rgb(38, 38, 38);
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.summary .totalBalance h3{
+    color: rgb(0, 39, 166);
+}
+.summary .totalIncome h3{
+    color: rgb(0, 166, 3);
+}
+.summary .totalExpense h3{
+    color: rgb(166, 0, 0);
+}
+
+
+
+.left .chartContainer{
+    width: 96%;
+    height: 60%;
+    background-color: rgb(255, 255, 255);
+    margin: 10px auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.chartContainer .chart{
+    width: 30%;
+    height: 50%;
+    background: linear-gradient(90deg, blue, green);
+    border-radius: 50%;
+}
+
+.chartContainer .stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: rgb(38, 38, 38);
+    font-size: 1.1rem;
+}
+
+.stats .balanceStat::before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.stats .incomeStat::before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.stats .expenseStat::before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+
+
+
+.MainContainer .right{
+    width: 50%;
+    height: 100%;
+    background-color: rgb(166, 255, 166);
+    border-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
