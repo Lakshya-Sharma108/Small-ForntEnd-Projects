@@ -158,11 +158,17 @@ html{
     gap: 10px;
 }
 
+
 .chartContainer .piChart{
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: conic-gradient(rgb(86, 114, 255) 0% 30%, rgb(86, 255, 103) 30% 70%, rgb(255, 86, 86) 70% 100%);
+    /* background: conic-gradient(rgb(86, 114, 255) 0% 30%, rgb(86, 255, 103) 30% 70%, rgb(255, 86, 86) 70% 100%); */
+    
+    background: conic-gradient($blue 0 4%,
+      $green 17% 100%
+      $blue 4% 17%,
+    );
 }
 
 .chartContainer .stats{
