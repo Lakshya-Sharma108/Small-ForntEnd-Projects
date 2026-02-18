@@ -43,13 +43,19 @@ html {
 } */
 
 .heading button {
-    padding: 8px 12px;
+    padding: 10px 12px;
     background: linear-gradient(to right, #6350f3, #3628f3);
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.heading button:hover {
+    background: linear-gradient(to right, #3628f3, #4a35e9);
+    transform: scale(1.02);
 }
 
 
@@ -320,6 +326,11 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.form .select .income:hover {
+    background-color: white;
 }
 
 .form .select .income img {
@@ -337,6 +348,15 @@ html {
     overflow: hidden;
     font-size: 1.1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+
+.form .select .expense:hover {
+    background-color: white;
 }
 
 .form .select .expense img {
