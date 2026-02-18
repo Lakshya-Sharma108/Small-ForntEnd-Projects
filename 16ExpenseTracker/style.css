@@ -1,17 +1,17 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body,
-html{
+html {
     height: 100%;
     width: 100%;
     font-family: 'Poppins', sans-serif;
 }
 
-.MainSection{
+.MainSection {
     width: 100%;
     height: 100%;
     background-color: rgb(152, 62, 235);
@@ -21,7 +21,7 @@ html{
     align-items: center;
 }
 
-.MainSection .heading{
+.MainSection .heading {
     width: 70%;
     height: 10%;
     background-color: white;
@@ -42,7 +42,7 @@ html{
     font-size: 1.1rem;
 } */
 
-.heading button{
+.heading button {
     padding: 8px 12px;
     background: linear-gradient(to right, #6350f3, #3628f3);
     color: white;
@@ -54,7 +54,7 @@ html{
 
 
 
-.MainSection .MainContainer{
+.MainSection .MainContainer {
     width: 70%;
     height: 70%;
     background-color: white;
@@ -66,7 +66,7 @@ html{
     gap: 20px;
 }
 
-.MainContainer .left{
+.MainContainer .left {
     width: 50%;
     height: 100%;
     background-color: rgb(255, 166, 166);
@@ -74,13 +74,13 @@ html{
     border-bottom-left-radius: 8px;
 }
 
-.left h3{
+.left h3 {
     color: rgb(0, 39, 166);
     font-size: 1.2rem;
     padding: 10px;
 }
 
-.left .summary{
+.left .summary {
     width: 96%;
     height: 25%;
     background-color: rgb(255, 255, 255);
@@ -92,7 +92,7 @@ html{
     gap: 5px;
 }
 
-.summary .totalBalance{
+.summary .totalBalance {
     width: 30%;
     height: 80%;
     background-color: rgb(166, 255, 166);
@@ -102,7 +102,7 @@ html{
     align-items: center;
 }
 
-.summary .totalIncome{
+.summary .totalIncome {
     width: 30%;
     height: 80%;
     background-color: rgb(166, 255, 166);
@@ -112,7 +112,7 @@ html{
     align-items: center;
 }
 
-.summary .totalExpense{
+.summary .totalExpense {
     width: 30%;
     height: 80%;
     background-color: rgb(166, 255, 166);
@@ -122,7 +122,7 @@ html{
     align-items: center;
 }
 
-.summary .summaryItem{
+.summary .summaryItem {
     color: rgb(38, 38, 38);
     font-size: 1.1rem;
     display: flex;
@@ -132,29 +132,65 @@ html{
     gap: 5px;
 }
 
-.summary .totalBalance h3{
+.summary .totalBalance h3 {
     color: rgb(0, 39, 166);
 }
-.summary .totalIncome h3{
+
+.summary .totalIncome h3 {
     color: rgb(0, 166, 3);
 }
-.summary .totalExpense h3{
+
+.summary .totalExpense h3 {
     color: rgb(166, 0, 0);
 }
 
-/* How to make pichart using html and css */
 
 
-
-
-
-
-
-
-.MainContainer .right{
-    width: 50%;
-    height: 100%;
-    background-color: rgb(166, 255, 166);
+.chartContainer {
+    width: 96%;
+    height: 60%;
+    background-color: rgb(255, 255, 255);
+    margin: 10px auto;
     border-radius: 8px;
-    border-bottom-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.chartContainer .piChart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: conic-gradient(pink 70deg,
+            lightblue 0 235deg,
+            orange 0);
+}
+
+.chartContainer .stats {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    .MainContainer .right {
+        width: 50%;
+        height: 100%;
+        background-color: rgb(166, 255, 166);
+        border-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
