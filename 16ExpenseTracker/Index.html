@@ -34,7 +34,7 @@
                 </div>
                 <div class="chartContainer">
                     <div class="piChart">
-                        
+
                     </div>
                     <div class="stats">
                         <p><span class="balanceStat">Balance: ₹31000</span></p>
@@ -47,7 +47,48 @@
 
 
             <div class="right">
+                <h3>Add Transactions</h3>
+                <div class="form">
+                    <div class="transactionTitle">
+                        <label for="title">Transaction Title</label>
+                        <input type="text" id="title" placeholder="e.g. Salary, Groceries, etc.">
+                    </div>
+                    
+                    <div class="transactionAmount">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="e.g. 5000">
+                    </div>
 
+                    <div class="select">
+                        <div class="income">
+                            <img src="./Images/Income.png" alt="">
+                        </div>
+                        <div class="expense">
+                            <img src="./Images/Expence.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="category">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="salary">Salary</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="education">Education</option>
+                            <option value="miscellaneous">Miscellaneous</option>
+                        </select>
+                    </div>
+                    <div class="date">
+                        <label for="date">Date</label>
+                        <input type="date" id="date">
+                    </div>
+                    <div class="addButton">
+                        <button type="submit">Add Transaction</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

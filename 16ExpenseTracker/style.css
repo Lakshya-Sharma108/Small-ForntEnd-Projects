@@ -187,10 +187,129 @@ html {
 
 
 
-    .MainContainer .right {
-        width: 50%;
-        height: 100%;
-        background-color: rgb(166, 255, 166);
-        border-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
+.MainContainer .right {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(166, 255, 166);
+    border-radius: 8px;
+}
+
+.right h3 {
+    color: rgb(0, 39, 166);
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+.right .form {
+    width: 90%;
+    height: 88%;
+    background-color: rgb(255, 255, 255);
+    margin: 10px auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 20px;
+}
+
+.form .transactionTitle{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(166, 255, 166);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.form .transactionTitle label{
+    font-size: 1.1rem;
+}
+
+.form .transactionTitle input{
+    width: 100%;
+    height: 65%;
+    background-color: rgb(255, 255, 255);
+    /* border: none; */
+    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 1.1rem;
+}
+
+
+
+.form .transactionAmount{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(166, 255, 166);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* gap: 5px; */
+}
+
+.form .transactionAmount label{
+    font-size: 1.1rem;
+}
+
+.form .transactionAmount input{
+    width: 100%;
+    height: 65%;
+    background-color: rgb(255, 255, 255);
+    /* border: none; */
+    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 1.1rem;
+}
+
+
+
+
+.form .select{
+    width: 100%;
+    height: 25%;
+    background-color: rgb(166, 255, 166);
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form .select .income{
+    width: 40%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form .select .income img{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+.form .select .expense{
+    width: 40%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.form .select .expense img{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
