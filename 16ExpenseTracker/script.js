@@ -27,9 +27,5 @@ addTransactionBtn.addEventListener("click", function () {
                 </div>
             </div>`;
 
-
-    
-    
-
     document.querySelector(".TransactionHistory").append(historyCard);
 });
