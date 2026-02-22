@@ -21,7 +21,7 @@
                 <div class="summary">
                     <div class="totalBalance summaryItem">
                         <h4>Total Balance</h4>
-                        <h3>₹0</h3>
+                        <h3>₹50</h3>
                     </div>
                     <div class="totalIncome summaryItem">
                         <h4>Total Income</h4>
@@ -60,12 +60,11 @@
                     </div>
 
                     <div class="select">
-                        <div class="income">
-                            <img src="./Images/Income.png" alt="">
-                        </div>
-                        <div class="expense">
-                            <img src="./Images/Expence.png" alt="">
-                        </div>
+                        <label for="type">Type</label>
+                        <select id="type">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
                     </div>
 
                     <div class="category">
@@ -95,16 +94,6 @@
 
         <div class="TransactionHistory">
             <h3>Transaction History</h3>
-            <div class="transaction">
-                <div class="transactionDetails">
-                    <h4>Salary</h4>
-                    <p>₹5000</p>
-                    <button>Delete</button>
-                </div>
-                <div class="transactionDate">
-                    <p>2024-06-01</p>
-                </div>
-            </div>
 
             <!-- <div class="transaction">
                 <div class="transactionDetails">

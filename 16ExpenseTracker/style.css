@@ -308,64 +308,29 @@ html {
 
 .form .select {
     width: 100%;
-    height: 20%;
+    height: 15%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 30px;
+    align-items: flex-start;
+    gap: 5px;
 }
 
-.form .select .income {
-    width: 30%;
-    height: 100%;
-    border: 1px solid lightgray;
-    background-color: rgb(233, 233, 233);
-    border-radius: 8px;
-    overflow: hidden;
+.form .select label {
     font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
 }
 
-.form .select .income:hover {
-    background-color: white;
-}
-
-.form .select .income img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-}
-
-
-.form .select .expense {
-    width: 30%;
-    height: 100%;
+.form .select select {
+    width: 100%;
+    height: 65%;
+    background-color: rgb(255, 255, 255);
     border: 1px solid lightgray;
-    background-color: rgb(233, 233, 233);
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 4px;
+    padding: 0 10px;
     font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
 }
 
 
-.form .select .expense:hover {
-    background-color: white;
-}
-
-.form .select .expense img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-}
 
 
 .form .category {
@@ -495,8 +460,8 @@ html {
 }
 
 .transactionDetails p{
-    color: rgb(0, 166, 3);
     font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .transactionDetails button{
