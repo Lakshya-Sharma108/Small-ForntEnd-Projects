@@ -1,145 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="app">
+    <div class="app">
 
-    <!-- Header -->
-    <header class="header">
-        <div class="header-left">
-            <div class="logo-mark">₹</div>
-            <div>
-                <h1 class="app-title">FinTrack</h1>
-                <p class="app-sub">by Lakshaya Awasthi</p>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo-mark">₹</div>
+                <div>
+                    <h1 class="app-title">FinTrack</h1>
+                    <p class="app-sub">by Lakshaya Awasthi</p>
+                </div>
             </div>
-        </div>
-        <button class="reset-btn" id="resetBtn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            Reset All
-        </button>
-    </header>
+            <button class="reset-btn" id="resetBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                </svg>
+                Reset All
+            </button>
+        </header>
 
-    <!-- Summary Cards -->
-    <section class="summary-section">
-        <div class="summary-card balance-card">
-            <span class="card-label">Total Balance</span>
-            <span class="card-amount" id="totalBalance">₹0</span>
-            <div class="card-bg-icon">◈</div>
-        </div>
-        <div class="summary-card income-card">
-            <span class="card-label">Total Income</span>
-            <span class="card-amount" id="totalIncome">₹0</span>
-            <div class="trend-dot income-dot"></div>
-        </div>
-        <div class="summary-card expense-card">
-            <span class="card-label">Total Expenses</span>
-            <span class="card-amount" id="totalExpense">₹0</span>
-            <div class="trend-dot expense-dot"></div>
-        </div>
-    </section>
+        <!-- Summary Cards -->
+        <section class="summary-section">
+            <div class="summary-card balance-card">
+                <span class="card-label">Total Balance</span>
+                <span class="card-amount" id="totalBalance">₹0</span>
+                <div class="card-bg-icon">◈</div>
+            </div>
+            <div class="summary-card income-card">
+                <span class="card-label">Total Income</span>
+                <span class="card-amount" id="totalIncome">₹0</span>
+                <div class="trend-dot income-dot"></div>
+            </div>
+            <div class="summary-card expense-card">
+                <span class="card-label">Total Expenses</span>
+                <span class="card-amount" id="totalExpense">₹0</span>
+                <div class="trend-dot expense-dot"></div>
+            </div>
+        </section>
 
-    <!-- Main Grid -->
-    <div class="main-grid">
+        <!-- Main Grid -->
+        <div class="main-grid">
 
-        <!-- Chart Panel -->
-        <div class="panel chart-panel">
-            <h2 class="panel-title">Spending Overview</h2>
-            <div class="chart-wrap">
-                <div class="donut-chart" id="donutChart">
-                    <div class="donut-inner">
-                        <span class="donut-label" id="donutLabel">No Data</span>
-                        <span class="donut-pct" id="donutPct">—</span>
+            <!-- Chart Panel -->
+            <div class="panel chart-panel">
+                <h2 class="panel-title">Spending Overview</h2>
+                <div class="chart-wrap">
+                    <div class="donut-chart" id="donutChart">
+                        <div class="donut-inner">
+                            <span class="donut-label" id="donutLabel">No Data</span>
+                            <span class="donut-pct" id="donutPct">—</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#34d399"></span>
+                        <span>Income</span>
+                        <span class="legend-val" id="legendIncome">₹0</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background:#f87171"></span>
+                        <span>Expenses</span>
+                        <span class="legend-val" id="legendExpense">₹0</span>
                     </div>
                 </div>
             </div>
-            <div class="chart-legend">
-                <div class="legend-item">
-                    <span class="legend-dot" style="background:#34d399"></span>
-                    <span>Income</span>
-                    <span class="legend-val" id="legendIncome">₹0</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-dot" style="background:#f87171"></span>
-                    <span>Expenses</span>
-                    <span class="legend-val" id="legendExpense">₹0</span>
+
+            <!-- Form Panel -->
+            <div class="panel form-panel">
+                <h2 class="panel-title">Add Transaction</h2>
+                <div class="form-grid">
+                    <div class="field full">
+                        <label>Transaction Title</label>
+                        <input type="text" id="title" placeholder="e.g. Salary, Groceries…">
+                    </div>
+                    <div class="field">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="amount" placeholder="0.00" min="1">
+                    </div>
+                    <div class="field">
+                        <label>Type</label>
+                        <select id="type">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Category</label>
+                        <select id="category">
+                            <option value="salary">💼 Salary</option>
+                            <option value="groceries">🛒 Groceries</option>
+                            <option value="entertainment">🎬 Entertainment</option>
+                            <option value="utilities">💡 Utilities</option>
+                            <option value="transportation">🚗 Transportation</option>
+                            <option value="healthcare">🏥 Healthcare</option>
+                            <option value="education">📚 Education</option>
+                            <option value="miscellaneous">📦 Miscellaneous</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Date</label>
+                        <input type="date" id="date">
+                    </div>
+                    <div class="field full">
+                        <button class="submit-btn" id="addBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Add Transaction
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Form Panel -->
-        <div class="panel form-panel">
-            <h2 class="panel-title">Add Transaction</h2>
-            <div class="form-grid">
-                <div class="field full">
-                    <label>Transaction Title</label>
-                    <input type="text" id="title" placeholder="e.g. Salary, Groceries…">
-                </div>
-                <div class="field">
-                    <label>Amount (₹)</label>
-                    <input type="number" id="amount" placeholder="0.00" min="1">
-                </div>
-                <div class="field">
-                    <label>Type</label>
-                    <select id="type">
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label>Category</label>
-                    <select id="category">
-                        <option value="salary">💼 Salary</option>
-                        <option value="groceries">🛒 Groceries</option>
-                        <option value="entertainment">🎬 Entertainment</option>
-                        <option value="utilities">💡 Utilities</option>
-                        <option value="transportation">🚗 Transportation</option>
-                        <option value="healthcare">🏥 Healthcare</option>
-                        <option value="education">📚 Education</option>
-                        <option value="miscellaneous">📦 Miscellaneous</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label>Date</label>
-                    <input type="date" id="date">
-                </div>
-                <div class="field full">
-                    <button class="submit-btn" id="addBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                        Add Transaction
-                    </button>
+        <!-- Transaction History -->
+        <div class="panel history-panel">
+            <div class="history-header">
+                <h2 class="panel-title">Transaction History</h2>
+                <span class="history-count" id="historyCount">0 transactions</span>
+            </div>
+            <div id="transactionList" class="transaction-list">
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">📊</div>
+                    <p>No transactions yet. Add one above!</p>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <!-- Transaction History -->
-    <div class="panel history-panel">
-        <div class="history-header">
-            <h2 class="panel-title">Transaction History</h2>
-            <span class="history-count" id="historyCount">0 transactions</span>
-        </div>
-        <div id="transactionList" class="transaction-list">
-            <div class="empty-state" id="emptyState">
-                <div class="empty-icon">📊</div>
-                <p>No transactions yet. Add one above!</p>
-            </div>
-        </div>
-    </div>
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
 
-</div>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
