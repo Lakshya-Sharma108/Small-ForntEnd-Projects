@@ -25,24 +25,24 @@ const $id = id => document.getElementById(id);
 
 const els = {
     totalBalance: $id('totalBalance'),
-    totalIncome:  $id('totalIncome'),
+    totalIncome: $id('totalIncome'),
     totalExpense: $id('totalExpense'),
-    donutChart:   $id('donutChart'),
-    donutLabel:   $id('donutLabel'),
-    donutPct:     $id('donutPct'),
+    donutChart: $id('donutChart'),
+    donutLabel: $id('donutLabel'),
+    donutPct: $id('donutPct'),
     legendIncome: $id('legendIncome'),
-    legendExpense:$id('legendExpense'),
-    txList:       $id('transactionList'),
-    emptyState:   $id('emptyState'),
+    legendExpense: $id('legendExpense'),
+    txList: $id('transactionList'),
+    emptyState: $id('emptyState'),
     historyCount: $id('historyCount'),
-    addBtn:       $id('addBtn'),
-    resetBtn:     $id('resetBtn'),
-    toast:        $id('toast'),
-    title:        $id('title'),
-    amount:       $id('amount'),
-    type:         $id('type'),
-    category:     $id('category'),
-    date:         $id('date'),
+    addBtn: $id('addBtn'),
+    resetBtn: $id('resetBtn'),
+    toast: $id('toast'),
+    title: $id('title'),
+    amount: $id('amount'),
+    type: $id('type'),
+    category: $id('category'),
+    date: $id('date'),
 };
 
 // ─── LocalStorage ────────────────────────────────────
@@ -77,10 +77,10 @@ function formatCurrency(n) {
 }
 
 function updateSummary() {
-    els.totalBalance.textContent  = formatCurrency(state.balance);
-    els.totalIncome.textContent   = formatCurrency(state.totalIncome);
-    els.totalExpense.textContent  = formatCurrency(state.totalExpense);
-    els.legendIncome.textContent  = formatCurrency(state.totalIncome);
+    els.totalBalance.textContent = formatCurrency(state.balance);
+    els.totalIncome.textContent = formatCurrency(state.totalIncome);
+    els.totalExpense.textContent = formatCurrency(state.totalExpense);
+    els.legendIncome.textContent = formatCurrency(state.totalIncome);
     els.legendExpense.textContent = formatCurrency(state.totalExpense);
 }
 
@@ -171,11 +171,11 @@ function formatDate(dateStr) {
 
 // ─── Add Transaction ─────────────────────────────────
 els.addBtn.addEventListener('click', () => {
-    const title    = els.title.value.trim();
-    const amount   = parseFloat(els.amount.value);
-    const type     = els.type.value;
+    const title = els.title.value.trim();
+    const amount = parseFloat(els.amount.value);
+    const type = els.type.value;
     const category = els.category.value;
-    const date     = els.date.value;
+    const date = els.date.value;
 
     // Validation
     if (!title) { showToast('⚠️ Please enter a transaction title.', true); els.title.focus(); return; }
