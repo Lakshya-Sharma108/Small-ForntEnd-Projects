@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Manager</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#0f172a;
+            color:white;
+            text-align:center;
+        }
+        input,button{
+            padding:10px;
+            margin:5px;
+            border-radius:6px;
+            border:none;
+        }
+        button{
+            background:#22c55e;
+            color:white;
+            cursor:pointer;
+        }
+        li{
+            margin:10px;
+        }
+        .delete{
+            background:red;
+            margin-left:10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Student Manager Full Stack</h1>
+
+<h3>Add Student</h3>
+
+<input type="text" id="name" placeholder="Enter name">
+<input type="email" id="email" placeholder="Enter email">
+<br>
+<button onclick="addStudent()">Add Student</button>
+
+<h3>All Students</h3>
+<ul id="list"></ul>
+
+<script>
+
+const BASE_URL = "http://localhost:8080";
+
+function addStudent(){
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    fetch(BASE_URL + "/add",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({name,email})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        loadStudents();
+    });
+}
+
+function loadStudents(){
+ fetch(BASE_URL + "/students")
+ .then(res=>res.json())
+ .then(data=>{
+    let list=document.getElementById("list");
+    list.innerHTML="";
+
+    data.forEach(s=>{
+      list.innerHTML+=`
+      <li>
+      ${s.name} (${s.email})
+      <button class="delete" onclick="deleteStudent(${s.id})">Delete</button>
+      </li>`;
+    })
+ });
+}
+
+function deleteStudent(id){
+ fetch(BASE_URL + "/delete/"+id,{
+    method:"DELETE"
+ })
+ .then(()=>loadStudents());
+}
+
+loadStudents();
+
+</script>
+</body>
+</html>
