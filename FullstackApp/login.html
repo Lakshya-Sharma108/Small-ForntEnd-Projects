@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: system-ui;
         }
 
         body {
@@ -19,21 +19,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            background: linear-gradient(135deg, #4f46e5, #0ea5e9);
         }
 
         .card {
             background: white;
             padding: 35px;
-            width: 360px;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 380px;
+            border-radius: 14px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
             text-align: center;
             margin-bottom: 25px;
-            color: #333;
         }
 
         .input-box {
@@ -44,25 +44,28 @@
         input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
             border-radius: 8px;
-            outline: none;
-            font-size: 14px;
+            border: 1px solid #ddd;
         }
 
-        input:focus {
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, .2);
+        .toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
         }
 
         button {
             width: 100%;
             padding: 12px;
-            background: #4f46e5;
-            color: white;
             border: none;
             border-radius: 8px;
-            font-weight: bold;
+            background: #4f46e5;
+            color: white;
+            font-weight: 600;
             cursor: pointer;
         }
 
@@ -71,10 +74,9 @@
         }
 
         .error {
+            margin-top: 10px;
             text-align: center;
             color: red;
-            margin-top: 10px;
-            font-size: 14px;
         }
     </style>
 </head>
@@ -85,11 +87,12 @@
         <h2>Admin Login</h2>
 
         <div class="input-box">
-            <input type="email" id="email" placeholder="Admin Email">
+            <input id="email" placeholder="Admin Email">
         </div>
 
         <div class="input-box">
-            <input type="password" id="password" placeholder="Password">
+            <input id="password" type="password" placeholder="Password">
+            <span class="toggle" onclick="togglePass()">👁</span>
         </div>
 
         <button onclick="login()">Login</button>
@@ -97,9 +100,14 @@
     </div>
 
     <script>
+        function togglePass() {
+            const pass = document.getElementById("password");
+            pass.type = pass.type === "password" ? "text" : "password";
+        }
+
         function login() {
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
             fetch("http://localhost:8080/login", {
                 method: "POST",
@@ -110,17 +118,15 @@
                 .then(data => {
                     if (data !== "fail") {
                         localStorage.setItem("token", data);
-
-                        let payload = JSON.parse(atob(data.split('.')[1]));
+                        const payload = JSON.parse(atob(data.split('.')[1]));
                         if (payload.role === "ADMIN") {
                             window.location = "admin.html";
-                        } else {
-                            alert("User logged in successfully");
                         }
                     } else {
                         document.getElementById("msg").innerText = "Invalid login";
                     }
-                });
+                })
+                .catch(() => alert("Server not responding"));
         }
     </script>
 

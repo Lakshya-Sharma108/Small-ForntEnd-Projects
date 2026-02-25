@@ -4,90 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration</title>
+    <title>Student Manager</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial
+            font-family: system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background: #f1f5f9;
-            height: 100vh
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* NAVBAR */
         .navbar {
-            background: #111827;
-            color: white;
-            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
-            align-items: center
+            align-items: center;
+            padding: 20px 40px;
         }
 
         .logo {
             font-size: 20px;
-            font-weight: bold
+            font-weight: 600;
         }
 
         .admin-btn {
-            background: #4f46e5;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
+            background: #6366f1;
+            padding: 8px 18px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: bold
+            color: white;
+            transition: 0.3s;
         }
 
-        .container {
+        .admin-btn:hover {
+            background: #4f46e5;
+        }
+
+        /* MAIN */
+        .main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 85vh
+            padding: 20px;
         }
 
+        /* CARD */
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            width: 360px
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
         }
 
-        h2 {
+        .card h2 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #111827
+            margin-bottom: 25px;
+        }
+
+        /* INPUTS */
+        .input-group {
+            margin-bottom: 18px;
         }
 
         input {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
             border-radius: 8px;
-            outline: none
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
         }
 
+        input::placeholder {
+            color: #cbd5e1;
+        }
+
+        input:focus {
+            outline: none;
+            border: 1px solid #6366f1;
+        }
+
+        /* BUTTON */
         button {
             width: 100%;
             padding: 12px;
-            background: #22c55e;
-            color: white;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer
+            background: #22c55e;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .msg {
-            text-align: center;
-            margin-top: 12px;
-            color: green;
-            font-weight: 600
+        button:hover {
+            background: #16a34a;
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #22c55e;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:500px) {
+            .navbar {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -96,42 +141,69 @@
 
     <div class="navbar">
         <div class="logo">Student Manager</div>
-        <a class="admin-btn" href="login.html">Admin Login</a>
+        <a href="login.html" class="admin-btn">Admin Login</a>
     </div>
 
-    <div class="container">
+    <div class="main">
         <div class="card">
             <h2>User Registration</h2>
 
-            <input id="name" placeholder="Enter name">
-            <input id="email" placeholder="Enter email">
-            <input id="password" type="password" placeholder="Enter password">
-            <button onclick="register()">Register</button>
-            <p id="msg" class="msg"></p>
+            <div class="input-group">
+                <input id="name" placeholder="Full Name">
+            </div>
 
+            <div class="input-group">
+                <input id="email" placeholder="Email">
+            </div>
+
+            <div class="input-group">
+                <input id="password" type="password" placeholder="Password">
+            </div>
+
+            <button onclick="register()">Register</button>
         </div>
     </div>
 
+    <div class="toast" id="toast"></div>
+
     <script>
+        function showToast(message, success = true) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.style.background = success ? "#22c55e" : "#ef4444";
+            toast.style.display = "block";
+            setTimeout(() => toast.style.display = "none", 2000);
+        }
+
         function register() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
 
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-
-            if (name === "" || email === "" || password === "") {
-                alert("Fill all fields");
+            if (!name || !email || !password) {
+                showToast("All fields required", false);
                 return;
             }
 
-            fetch("http://localhost:8080/register-user", {
+            fetch("http://localhost:8080/register", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({ name, email, password })
             })
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById("msg").innerText = data;
+                .then(res => {
+                    if (!res.ok) throw new Error();
+                    return res.json();
+                })
+                .then(() => {
+                    showToast("Registration successful ✅");
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("password").value = "";
+                })
+                .catch(() => {
+                    showToast("Registration failed ❌", false);
                 });
         }
     </script>
