@@ -1,75 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Admin Panel</title>
-<style>
-body{font-family:Arial;background:#f4f6f9;padding:20px;}
-.top{display:flex;justify-content:space-between;margin-bottom:20px;}
-button{padding:8px 15px;border:none;border-radius:5px;cursor:pointer;}
-.logout{background:red;color:white;}
-.add{background:green;color:white;}
-.card{background:white;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-</style>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout {
+            background: red;
+            color: white;
+        }
+
+        .add {
+            background: green;
+            color: white;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="top">
-<h2>Admin Dashboard</h2>
-<button class="logout" onclick="logout()">Logout</button>
-</div>
+    <div class="top">
+        <h2>Admin Dashboard</h2>
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
 
-<div class="card">
-<h3>Add Student</h3>
-<input id="name" placeholder="Name">
-<input id="email" placeholder="Email">
-<button class="add" onclick="addStudent()">Add</button>
+    <div class="card">
+        <h3>Add Student</h3>
+        <input id="name" placeholder="Name">
+        <input id="email" placeholder="Email">
+        <button class="add" onclick="addStudent()">Add</button>
 
-<h3>All Students</h3>
-<ul id="list"></ul>
-</div>
+        <h3>All Students</h3>
+        <ul id="list"></ul>
+    </div>
 
-<script>
-if(localStorage.getItem("admin")!="true"){
-window.location="login.html";
-}
+    <script>
+        if (localStorage.getItem("admin") != "true") {
+            window.location = "login.html";
+        }
 
-function logout(){
-localStorage.removeItem("admin");
-window.location="login.html";
-}
+        function logout() {
+            localStorage.removeItem("admin");
+            window.location = "login.html";
+        }
 
-function addStudent(){
-let name=document.getElementById("name").value;
-let email=document.getElementById("email").value;
+        function addStudent() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
 
-fetch("http://localhost:8080/add",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({name,email})
-}).then(()=>loadStudents());
-}
+            fetch("http://localhost:8080/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email })
+            }).then(() => loadStudents());
+        }
 
-function loadStudents(){
-fetch("http://localhost:8080/students")
-.then(res=>res.json())
-.then(data=>{
-let list=document.getElementById("list");
-list.innerHTML="";
-data.forEach(s=>{
-list.innerHTML+=`<li>${s.name} (${s.email})
+        function loadStudents() {
+            fetch("http://localhost:8080/students")
+                .then(res => res.json())
+                .then(data => {
+                    let list = document.getElementById("list");
+                    list.innerHTML = "";
+                    data.forEach(s => {
+                        list.innerHTML += `<li>${s.name} (${s.email})
 <button onclick="del(${s.id})">Delete</button></li>`;
-});
-});
-}
+                    });
+                });
+        }
 
-function del(id){
-fetch("http://localhost:8080/delete/"+id,{method:"DELETE"})
-.then(()=>loadStudents());
-}
+        function del(id) {
+            fetch("http://localhost:8080/delete/" + id, { method: "DELETE" })
+                .then(() => loadStudents());
+        }
 
-loadStudents();
-</script>
+        loadStudents();
+    </script>
 
 </body>
+
 </html>
