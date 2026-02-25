@@ -11,16 +11,16 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial;
         }
 
         body {
             display: flex;
-            background: #f1f3f6;
-            height: 100vh;
+            background: #f1f5f9;
+            height: 100vh
         }
 
-        /* SIDEBAR */
+        /* Sidebar */
         .sidebar {
             width: 230px;
             background: #111827;
@@ -38,56 +38,49 @@
         .sidebar a {
             display: block;
             color: #cbd5e1;
-            text-decoration: none;
             padding: 12px;
-            margin: 6px 0;
+            margin: 8px 0;
+            text-decoration: none;
             border-radius: 6px;
-            transition: .3s;
         }
 
         .sidebar a:hover {
             background: #1f2937;
-            color: white;
+            color: white
         }
 
-        /* MAIN */
+        /* Main */
         .main {
             margin-left: 230px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            width: 100%
         }
 
-        /* TOPBAR */
-        .topbar {
+        .top {
             background: white;
             padding: 15px 25px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1)
         }
 
         .logout {
             background: #ef4444;
-            border: none;
             color: white;
+            border: none;
             padding: 8px 14px;
             border-radius: 6px;
             cursor: pointer;
         }
 
-        /* CONTENT */
         .content {
-            padding: 25px;
+            padding: 25px
         }
 
-        /* CARDS */
-        .cards {
+        .card-box {
             display: flex;
             gap: 20px;
-            flex-wrap: wrap;
             margin-bottom: 25px;
+            flex-wrap: wrap;
         }
 
         .card {
@@ -99,24 +92,12 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
-        .card h3 {
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 22px;
-            font-weight: bold;
-            color: #111;
-        }
-
-        /* FORM */
-        .form-box {
+        .form {
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         input {
@@ -126,7 +107,7 @@
             border-radius: 6px;
         }
 
-        .add-btn {
+        .add {
             background: #22c55e;
             color: white;
             border: none;
@@ -135,29 +116,26 @@
             cursor: pointer;
         }
 
-        /* TABLE */
         table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 10px;
-            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         th,
         td {
             padding: 14px;
-            text-align: left;
             border-bottom: 1px solid #eee;
+            text-align: left;
         }
 
         th {
             background: #111827;
-            color: white;
+            color: white
         }
 
-        .delete {
+        .del {
             background: #ef4444;
             border: none;
             color: white;
@@ -165,43 +143,83 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .edit {
+            background: #3b82f6;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 6px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .save {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="sidebar">
-        <h2>Admin Panel</h2>
+        <h2>Admin</h2>
         <a href="#">Dashboard</a>
         <a href="#">Students</a>
-        <a href="#">Settings</a>
     </div>
 
     <div class="main">
 
-        <div class="topbar">
-            <h3>Dashboard</h3>
+        <div class="top">
+            <h3>Admin Dashboard</h3>
             <button class="logout" onclick="logout()">Logout</button>
         </div>
 
         <div class="content">
 
-            <div class="cards">
+            <div class="card-box">
                 <div class="card">
                     <h3>Total Students</h3>
-                    <p id="total">0</p>
+                    <h2 id="total">0</h2>
                 </div>
+
                 <div class="card">
-                    <h3>Project</h3>
-                    <p>Student Manager</p>
+                    <h3>Status</h3>
+                    <h2>Active</h2>
                 </div>
             </div>
 
-            <div class="form-box">
-                <h3>Add Student</h3>
-                <input id="name" placeholder="Enter name">
-                <input id="email" placeholder="Enter email">
-                <button class="add-btn" onclick="addStudent()">Add Student</button>
+            <div class="form">
+                <h3>Add Student (Admin Only)</h3>
+                <input id="name" placeholder="Name">
+                <input id="email" placeholder="Email">
+                <button class="add" onclick="addStudent()">Add</button>
             </div>
 
             <table>
@@ -219,64 +237,46 @@
         </div>
     </div>
 
+    <!-- Edit Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <h3>Edit Student</h3>
+            <input id="editName" placeholder="Name">
+            <input id="editEmail" placeholder="Email">
+            <button class="save" onclick="updateStudent()">Update</button>
+        </div>
+    </div>
+
     <script>
+        let token = localStorage.getItem("token");
+        if (!token) { window.location = "login.html"; }
 
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-            window.location = "login.html";
-        }
+        let editId = null;
 
         function logout() {
             localStorage.removeItem("token");
             window.location = "login.html";
         }
 
-        function handleUnauthorized(response) {
-            if (response.status === 401) {
-                alert("Session expired. Please login again.");
-                logout();
-                return true;
-            }
-            return false;
-        }
-
         function addStudent() {
             let name = document.getElementById("name").value;
             let email = document.getElementById("email").value;
 
-            fetch("http://localhost:8080/add", {
+            fetch("http://localhost:8080/register", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": token
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ name, email })
-            })
-                .then(response => {
-                    if (handleUnauthorized(response)) return;
-                    return response.json();
-                })
-                .then(() => {
-                    loadStudents();
-                });
+            }).then(() => load());
         }
 
-        function loadStudents() {
+        function load() {
             fetch("http://localhost:8080/students", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": token
-                }
+                headers: { "Authorization": token }
             })
-                .then(response => {
-                    if (handleUnauthorized(response)) return;
-                    return response.json();
-                })
+                .then(res => res.json())
                 .then(data => {
-                    if (!data) return;
-
                     let table = document.getElementById("table");
                     table.innerHTML = "";
                     document.getElementById("total").innerText = data.length;
@@ -288,7 +288,8 @@
 <td>${s.name}</td>
 <td>${s.email}</td>
 <td>
-<button class="delete" onclick="del(${s.id})">Delete</button>
+<button class="edit" onclick="openEdit(${s.id},'${s.name}','${s.email}')">Edit</button>
+<button class="del" onclick="del(${s.id})">Delete</button>
 </td>
 </tr>`;
                     });
@@ -298,22 +299,41 @@
         function del(id) {
             fetch("http://localhost:8080/delete/" + id, {
                 method: "DELETE",
+                headers: { "Authorization": token }
+            }).then(() => load());
+        }
+
+        function openEdit(id, name, email) {
+            editId = id;
+            document.getElementById("editName").value = name;
+            document.getElementById("editEmail").value = email;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function updateStudent() {
+            let name = document.getElementById("editName").value;
+            let email = document.getElementById("editEmail").value;
+
+            fetch("http://localhost:8080/update/" + editId, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": token
-                }
-            })
-                .then(response => {
-                    if (handleUnauthorized(response)) return;
-                    return response.text();
-                })
-                .then(() => {
-                    loadStudents();
-                });
+                },
+                body: JSON.stringify({ name, email })
+            }).then(() => {
+                document.getElementById("modal").style.display = "none";
+                load();
+            });
         }
 
-        loadStudents();
+        window.onclick = function (e) {
+            if (e.target.id === "modal") {
+                document.getElementById("modal").style.display = "none";
+            }
+        }
 
+        load();
     </script>
 
 </body>

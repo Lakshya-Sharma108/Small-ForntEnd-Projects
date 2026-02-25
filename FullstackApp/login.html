@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial;
         }
 
         body {
@@ -19,28 +19,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #6366f1, #3b82f6);
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
         }
 
-        .login-card {
-            background: white;
+        .card {
+            background: #fff;
             padding: 35px;
             width: 350px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: fadeIn .5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
         }
 
         h2 {
@@ -49,7 +36,7 @@
             color: #333;
         }
 
-        .input-group {
+        .input-box {
             position: relative;
             margin-bottom: 18px;
         }
@@ -60,78 +47,66 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             outline: none;
-            transition: .3s;
-            font-size: 14px;
         }
 
         input:focus {
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, .2);
         }
 
-        .eye-icon {
+        .eye {
             position: absolute;
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            font-size: 16px;
-            color: #555;
         }
 
         button {
             width: 100%;
             padding: 12px;
-            background: #6366f1;
+            background: #4f46e5;
             color: white;
             border: none;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: bold;
             cursor: pointer;
-            transition: .3s;
         }
 
         button:hover {
-            background: #4f46e5;
+            background: #4338ca;
         }
 
         .error {
             text-align: center;
-            color: #ef4444;
+            color: red;
             margin-top: 10px;
-            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="login-card">
+    <div class="card">
         <h2>Admin Login</h2>
 
-        <div class="input-group">
+        <div class="input-box">
             <input type="text" id="username" placeholder="Username">
         </div>
 
-        <div class="input-group">
+        <div class="input-box">
             <input type="password" id="password" placeholder="Password">
-            <span class="eye-icon" onclick="togglePassword()">👁</span>
+            <span class="eye" onclick="toggle()">👁</span>
         </div>
 
         <button onclick="login()">Login</button>
-
         <p id="msg" class="error"></p>
-
     </div>
 
     <script>
-        function togglePassword() {
-            let pass = document.getElementById("password");
-            if (pass.type === "password") {
-                pass.type = "text";
-            } else {
-                pass.type = "password";
-            }
+        function toggle() {
+            let p = document.getElementById("password");
+            p.type = p.type === "password" ? "text" : "password";
         }
 
         function login() {
