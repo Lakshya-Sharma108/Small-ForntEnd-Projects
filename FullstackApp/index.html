@@ -1,160 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Registration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial
+        }
 
-body{
-background:#f1f5f9;
-height:100vh;
-}
+        body {
+            background: #f1f5f9;
+            height: 100vh
+        }
 
-/* 🔷 Top Navbar */
-.navbar{
-background:#111827;
-color:white;
-padding:15px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        .navbar {
+            background: #111827;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
 
-.logo{
-font-size:20px;
-font-weight:bold;
-}
+        .logo {
+            font-size: 20px;
+            font-weight: bold
+        }
 
-.admin-btn{
-background:#4f46e5;
-color:white;
-padding:8px 16px;
-border-radius:6px;
-text-decoration:none;
-font-weight:bold;
-transition:.3s;
-}
+        .admin-btn {
+            background: #4f46e5;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold
+        }
 
-.admin-btn:hover{
-background:#4338ca;
-}
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh
+        }
 
-/* 🔷 Center Card */
-.container{
-display:flex;
-justify-content:center;
-align-items:center;
-height:85vh;
-}
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 360px
+        }
 
-.card{
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-width:360px;
-}
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #111827
+        }
 
-h2{
-text-align:center;
-margin-bottom:20px;
-color:#111827;
-}
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none
+        }
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:8px;
-outline:none;
-}
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer
+        }
 
-input:focus{
-border-color:#4f46e5;
-box-shadow:0 0 0 3px rgba(79,70,229,0.2);
-}
-
-button{
-width:100%;
-padding:12px;
-background:#22c55e;
-color:white;
-border:none;
-border-radius:8px;
-font-size:15px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-background:#16a34a;
-}
-
-.msg{
-text-align:center;
-margin-top:12px;
-color:green;
-font-weight:600;
-}
-</style>
+        .msg {
+            text-align: center;
+            margin-top: 12px;
+            color: green;
+            font-weight: 600
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- 🔷 TOP BAR -->
-<div class="navbar">
-<div class="logo">Student Manager</div>
-<a class="admin-btn" href="login.html">Admin Login</a>
-</div>
+    <div class="navbar">
+        <div class="logo">Student Manager</div>
+        <a class="admin-btn" href="login.html">Admin Login</a>
+    </div>
 
-<!-- 🔷 CENTER FORM -->
-<div class="container">
-<div class="card">
+    <div class="container">
+        <div class="card">
+            <h2>User Registration</h2>
 
-<h2>Student Registration</h2>
+            <input id="name" placeholder="Enter name">
+            <input id="email" placeholder="Enter email">
+            <input id="password" type="password" placeholder="Enter password">
+            <button onclick="register()">Register</button>
+            <p id="msg" class="msg"></p>
 
-<input id="name" placeholder="Enter your name">
-<input id="email" placeholder="Enter your email">
-<button onclick="register()">Register</button>
+        </div>
+    </div>
 
-<p id="msg" class="msg"></p>
+    <script>
+        function register() {
 
-</div>
-</div>
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
 
-<script>
-function register(){
+            if (name === "" || email === "" || password === "") {
+                alert("Fill all fields");
+                return;
+            }
 
-let name=document.getElementById("name").value;
-let email=document.getElementById("email").value;
-
-if(name==="" || email===""){
-alert("Please fill all fields");
-return;
-}
-
-fetch("http://localhost:8080/register",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({name,email})
-})
-.then(res=>res.json())
-.then(()=>{
-document.getElementById("msg").innerText="Registration Successful!";
-document.getElementById("name").value="";
-document.getElementById("email").value="";
-});
-}
-</script>
+            fetch("http://localhost:8080/register-user", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password })
+            })
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("msg").innerText = data;
+                });
+        }
+    </script>
 
 </body>
+
 </html>
