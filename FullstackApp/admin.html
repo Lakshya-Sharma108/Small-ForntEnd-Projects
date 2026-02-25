@@ -1,62 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Admin Panel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
     <style>
-        body {
-            font-family: Arial;
-            background: #f4f6f9;
-            padding: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .top {
+        body {
+            display: flex;
+            background: #f1f3f6;
+            height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 230px;
+            background: #111827;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 12px;
+            margin: 6px 0;
+            border-radius: 6px;
+            transition: .3s;
+        }
+
+        .sidebar a:hover {
+            background: #1f2937;
+            color: white;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 230px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: white;
+            padding: 15px 25px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .logout {
-            background: red;
+            background: #ef4444;
+            border: none;
             color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
         }
 
-        .add {
-            background: green;
-            color: white;
+        /* CONTENT */
+        .content {
+            padding: 25px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
         }
 
         .card {
             background: white;
             padding: 20px;
+            flex: 1;
+            min-width: 200px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 22px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        /* FORM */
+        .form-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .add-btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #111827;
+            color: white;
+        }
+
+        .delete {
+            background: #ef4444;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media(max-width:800px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="top">
-        <h2>Admin Dashboard</h2>
-        <button class="logout" onclick="logout()">Logout</button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Students</a>
+        <a href="#">Settings</a>
     </div>
 
-    <div class="card">
-        <h3>Add Student</h3>
-        <input id="name" placeholder="Name">
-        <input id="email" placeholder="Email">
-        <button class="add" onclick="addStudent()">Add</button>
+    <!-- Main -->
+    <div class="main">
 
-        <h3>All Students</h3>
-        <ul id="list"></ul>
+        <!-- Topbar -->
+        <div class="topbar">
+            <h3>Dashboard</h3>
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="content">
+
+            <!-- Cards -->
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p id="total">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Project</h3>
+                    <p>Student Manager</p>
+                </div>
+            </div>
+
+            <!-- Add Student -->
+            <div class="form-box">
+                <h3>Add Student</h3>
+                <input id="name" placeholder="Enter name">
+                <input id="email" placeholder="Enter email">
+                <button class="add-btn" onclick="addStudent()">Add Student</button>
+            </div>
+
+            <!-- Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+                </tbody>
+            </table>
+
+        </div>
     </div>
 
     <script>
@@ -77,18 +255,29 @@
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email })
-            }).then(() => loadStudents());
+            }).then(() => {
+                loadStudents();
+            });
         }
 
         function loadStudents() {
             fetch("http://localhost:8080/students")
                 .then(res => res.json())
                 .then(data => {
-                    let list = document.getElementById("list");
-                    list.innerHTML = "";
+                    let table = document.getElementById("table");
+                    table.innerHTML = "";
+                    document.getElementById("total").innerText = data.length;
+
                     data.forEach(s => {
-                        list.innerHTML += `<li>${s.name} (${s.email})
-<button onclick="del(${s.id})">Delete</button></li>`;
+                        table.innerHTML += `
+<tr>
+<td>${s.id}</td>
+<td>${s.name}</td>
+<td>${s.email}</td>
+<td>
+<button class="delete" onclick="del(${s.id})">Delete</button>
+</td>
+</tr>`;
                     });
                 });
         }
