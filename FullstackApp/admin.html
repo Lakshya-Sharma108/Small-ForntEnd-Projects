@@ -165,22 +165,11 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
-        @media(max-width:800px) {
-            .sidebar {
-                display: none;
-            }
-
-            .main {
-                margin-left: 0;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- Sidebar -->
     <div class="sidebar">
         <h2>Admin Panel</h2>
         <a href="#">Dashboard</a>
@@ -188,10 +177,8 @@
         <a href="#">Settings</a>
     </div>
 
-    <!-- Main -->
     <div class="main">
 
-        <!-- Topbar -->
         <div class="topbar">
             <h3>Dashboard</h3>
             <button class="logout" onclick="logout()">Logout</button>
@@ -199,20 +186,17 @@
 
         <div class="content">
 
-            <!-- Cards -->
             <div class="cards">
                 <div class="card">
                     <h3>Total Students</h3>
                     <p id="total">0</p>
                 </div>
-
                 <div class="card">
                     <h3>Project</h3>
                     <p>Student Manager</p>
                 </div>
             </div>
 
-            <!-- Add Student -->
             <div class="form-box">
                 <h3>Add Student</h3>
                 <input id="name" placeholder="Enter name">
@@ -220,7 +204,6 @@
                 <button class="add-btn" onclick="addStudent()">Add Student</button>
             </div>
 
-            <!-- Table -->
             <table>
                 <thead>
                     <tr>
@@ -230,21 +213,32 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="table">
-                </tbody>
+                <tbody id="table"></tbody>
             </table>
 
         </div>
     </div>
 
     <script>
-        if (localStorage.getItem("admin") != "true") {
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
             window.location = "login.html";
         }
 
         function logout() {
-            localStorage.removeItem("admin");
+            localStorage.removeItem("token");
             window.location = "login.html";
+        }
+
+        function handleUnauthorized(response) {
+            if (response.status === 401) {
+                alert("Session expired. Please login again.");
+                logout();
+                return true;
+            }
+            return false;
         }
 
         function addStudent() {
@@ -255,18 +249,34 @@
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": localStorage.getItem("token")
+                    "Authorization": token
                 },
                 body: JSON.stringify({ name, email })
-            }).then(() => {
-                loadStudents();
-            });
+            })
+                .then(response => {
+                    if (handleUnauthorized(response)) return;
+                    return response.json();
+                })
+                .then(() => {
+                    loadStudents();
+                });
         }
 
         function loadStudents() {
-            fetch("http://localhost:8080/students")
-                .then(res => res.json())
+            fetch("http://localhost:8080/students", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token
+                }
+            })
+                .then(response => {
+                    if (handleUnauthorized(response)) return;
+                    return response.json();
+                })
                 .then(data => {
+                    if (!data) return;
+
                     let table = document.getElementById("table");
                     table.innerHTML = "";
                     document.getElementById("total").innerText = data.length;
@@ -286,11 +296,24 @@
         }
 
         function del(id) {
-            fetch("http://localhost:8080/delete/" + id, { method: "DELETE" })
-                .then(() => loadStudents());
+            fetch("http://localhost:8080/delete/" + id, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token
+                }
+            })
+                .then(response => {
+                    if (handleUnauthorized(response)) return;
+                    return response.text();
+                })
+                .then(() => {
+                    loadStudents();
+                });
         }
 
         loadStudents();
+
     </script>
 
 </body>
