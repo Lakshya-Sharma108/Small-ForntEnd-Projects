@@ -145,11 +145,11 @@
             })
                 .then(res => res.text())
                 .then(data => {
-                    if (data === "success") {
-                        localStorage.setItem("admin", "true");
+                    if (data !== "fail") {
+                        localStorage.setItem("token", data);
                         window.location = "admin.html";
                     } else {
-                        document.getElementById("msg").innerText = "Invalid username or password";
+                        document.getElementById("msg").innerText = "Invalid login";
                     }
                 });
         }

@@ -253,7 +253,10 @@
 
             fetch("http://localhost:8080/add", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem("token")
+                },
                 body: JSON.stringify({ name, email })
             }).then(() => {
                 loadStudents();
