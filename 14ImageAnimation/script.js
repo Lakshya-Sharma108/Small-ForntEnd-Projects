@@ -10,6 +10,7 @@ const CONFIG = {
     smoothing: 0.09           // animation smoothness
 };
 
+
 /* ================= FRAME ANIMATOR ================= */
 class FrameAnimator {
     constructor(canvasId, containerClass) {
@@ -103,6 +104,8 @@ class FrameAnimator {
             requestAnimationFrame(() => this.animate());
         }
     }
+
+
 
     /* ===== EVENTS ===== */
     bindEvents() {
