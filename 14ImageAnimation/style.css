@@ -65,6 +65,7 @@
     --gap-xl: clamp(28px, 4vw,   40px);
 }
 
+
 /* =============================================
    GLOBAL
    ============================================= */
@@ -98,6 +99,7 @@ body > * {
     z-index: 1;
 }
 
+
 /* =============================================
    SECTION DIVIDERS
    ============================================= */
@@ -115,6 +117,7 @@ hr:hover {
     border-top-color: var(--hr-color-secondary);
 }
 
+
 /* =============================================
    LANDING SECTION
    ============================================= */
@@ -127,6 +130,7 @@ hr:hover {
     justify-content: flex-start;
     padding-bottom: var(--space-lg);
 }
+
 
 /* =============================================
    NAVBAR
@@ -196,6 +200,7 @@ hr:hover {
     width: 100%;
 }
 
+
 /* Hamburger button — hidden on desktop, visible on mobile */
 .nav-toggle {
     display: none;
@@ -216,6 +221,7 @@ hr:hover {
     border-radius: 2px;
     transition: transform 0.3s, opacity 0.3s;
 }
+
 
 /* =============================================
    MAIN CONTENT (Hero)
@@ -321,6 +327,7 @@ hr:hover {
     will-change: transform;
 }
 
+
 /* =============================================
    ABOUT SECTION
    ============================================= */
@@ -394,6 +401,7 @@ hr:hover {
     display: block;
 }
 
+
 /* =============================================
    SKILLS SECTION
    ============================================= */
@@ -465,6 +473,7 @@ hr:hover {
 .skill img:hover {
     transform: scale(1.1);
 }
+
 
 /* =============================================
    PROJECT SECTION
@@ -580,6 +589,7 @@ hr:hover {
     color: var(--accent-color);
 }
 
+
 /* =============================================
    QUALIFICATION SECTION
    ============================================= */
@@ -683,6 +693,7 @@ hr:hover {
     word-break: break-word;
 }
 
+
 /* =============================================
    CONTACT SECTION
    ============================================= */
@@ -769,6 +780,7 @@ hr:hover {
     word-break: break-all;
     text-align: center;
 }
+
 
 /* =============================================
    COPYRIGHT SECTION
@@ -896,6 +908,7 @@ hr:hover {
         width: 92%;
     }
 }
+
 
 /* ---- MOBILE ≤ 480px ---- */
 @media (max-width: 480px) {
